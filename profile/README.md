@@ -245,6 +245,21 @@ Public contributions should be scoped, reviewable and evidence-backed. Pull requ
 
 See [CONTRIBUTING.md](../CONTRIBUTING.md) for the organization contribution standard.
 
+## Engineering Toolkit
+
+<details>
+<summary><strong>Open the DPN engineering governance toolkit</strong></summary>
+
+| Resource | Use |
+| --- | --- |
+| [Governance](../GOVERNANCE.md) | Change classes, decision rules and review expectations |
+| [ADR Template](../templates/ADR_TEMPLATE.md) | Record durable architecture decisions |
+| [Threat Model Template](../templates/THREAT_MODEL_TEMPLATE.md) | Document assets, actors, trust boundaries and abuse cases |
+| [Release Checklist](../templates/RELEASE_CHECKLIST.md) | Validate builds, security, artifacts and recovery before release |
+| [Third-Party License Template](../templates/THIRD_PARTY_LICENSES_TEMPLATE.md) | Separate externally licensed components from DPN-owned code |
+
+</details>
+
 ## Start Here
 
 <table>
