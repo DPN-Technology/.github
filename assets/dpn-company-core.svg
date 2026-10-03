@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="650" viewBox="0 0 1500 650" role="img" aria-labelledby="title desc">
+<title id="title">DPN Company Core</title><desc id="desc">DPN Technology company identity with binary storm, lightning and core engineering domains.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#020304"/><stop offset=".56" stop-color="#08090d"/><stop offset="1" stop-color="#120508"/></linearGradient>
+ <pattern id="binary" width="86" height="68" patternUnits="userSpaceOnUse">
+   <text x="2" y="13" font-family="Consolas,monospace" font-size="10" fill="#e50914" fill-opacity=".11">01011010</text>
+   <text x="17" y="32" font-family="Consolas,monospace" font-size="10" fill="#ff3342" fill-opacity=".07">101011</text>
+   <text x="1" y="52" font-family="Consolas,monospace" font-size="10" fill="#e50914" fill-opacity=".09">00110101</text>
+ </pattern>
+ <radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop stop-color="#e50914" stop-opacity=".30"/><stop offset="1" stop-color="#e50914" stop-opacity="0"/></radialGradient>
+ <filter id="g"><feGaussianBlur stdDeviation="5"/></filter>
+</defs>
+<rect width="1500" height="650" rx="26" fill="url(#bg)"/><rect width="1500" height="650" rx="26" fill="url(#binary)"/>
+
+<path d="M760 25 L816 102 L790 123 L846 184 L822 205 L887 293" fill="none" stroke="#ff1f32" stroke-width="8" opacity=".20" filter="url(#g)"/>
+<path d="M760 25 L816 102 L790 123 L846 184 L822 205 L887 293" fill="none" stroke="#ff2637" stroke-width="2.5" opacity=".62"/>
+
+<text x="68" y="64" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="900" fill="#ff5966" letter-spacing="4">DPN COMPANY CORE</text>
+<text x="68" y="99" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="800" fill="#f5f5f7">Hands-on engineering across software, systems, infrastructure and interactive technology.</text>
+
+<g transform="translate(750 345)">
+ <circle r="132" fill="url(#glow)"/><circle r="98" fill="#09090d" stroke="#e50914" stroke-opacity=".38"/><circle r="57" fill="#13070a" stroke="#ff3342" stroke-opacity=".58"/>
+ <text x="0" y="-10" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="28" font-weight="900" fill="#fff">DPN</text>
+ <text x="0" y="19" text-anchor="middle" font-family="Consolas,monospace" font-size="9" font-weight="900" fill="#ff6571" letter-spacing="2">TECHNOLOGY CORE</text>
+</g>
+
+<g font-family="Segoe UI,Arial,sans-serif">
+ <g transform="translate(85 175)"><rect width="470" height="135" rx="18" fill="#0d0e12" stroke="#e50914" stroke-opacity=".28"/><rect width="5" height="135" rx="2.5" fill="#e50914"/><text x="27" y="37" font-size="18" font-weight="850" fill="#fff">SOFTWARE + OPERATIONS</text><text x="27" y="70" font-size="11" fill="#8d929c">Business systems • workflow • service • workforce</text><text x="27" y="95" font-size="11" fill="#8d929c">identity • administration • operator tooling</text></g>
+ <g transform="translate(945 175)"><rect width="470" height="135" rx="18" fill="#0d0e12" stroke="#e50914" stroke-opacity=".28"/><rect width="5" height="135" rx="2.5" fill="#e50914"/><text x="27" y="37" font-size="18" font-weight="850" fill="#fff">INFRASTRUCTURE + CONTROL</text><text x="27" y="70" font-size="11" fill="#8d929c">Monitoring • network visibility • automation</text><text x="27" y="95" font-size="11" fill="#8d929c">recovery • control planes • systems management</text></g>
+ <g transform="translate(85 408)"><rect width="470" height="135" rx="18" fill="#0d0e12" stroke="#9b5cff" stroke-opacity=".30"/><rect width="5" height="135" rx="2.5" fill="#9b5cff"/><text x="27" y="37" font-size="18" font-weight="850" fill="#fff">AI + DEVELOPER SYSTEMS</text><text x="27" y="70" font-size="11" fill="#8d929c">Agents • research • memory • code workflows</text><text x="27" y="95" font-size="11" fill="#8d929c">automation • model integration • engineering tools</text></g>
+ <g transform="translate(945 408)"><rect width="470" height="135" rx="18" fill="#0d0e12" stroke="#ff5b13" stroke-opacity=".30"/><rect width="5" height="135" rx="2.5" fill="#ff5b13"/><text x="27" y="37" font-size="18" font-weight="850" fill="#fff">SIMULATION + INTERACTIVE</text><text x="27" y="70" font-size="11" fill="#8d929c">Industrial • tactical • community • game systems</text><text x="27" y="95" font-size="11" fill="#8d929c">training • experimentation • interactive experiences</text></g>
+</g>
+
+<g stroke="#e50914" stroke-opacity=".18" stroke-width="2" stroke-dasharray="6 9" fill="none"><path d="M555 242L655 315"/><path d="M945 242L845 315"/><path d="M555 475L655 390"/><path d="M945 475L845 390"/></g>
+<text x="68" y="612" font-family="Consolas,monospace" font-size="10" fill="#6d727b" letter-spacing="1.4">BUILD THE THING • UNDERSTAND THE SYSTEM • PROVE THE CLAIM • PRESERVE THE PATH BACK</text>
+<rect x="1" y="1" width="1498" height="648" rx="25" fill="none" stroke="#e50914" stroke-opacity=".18"/>
+</svg>
