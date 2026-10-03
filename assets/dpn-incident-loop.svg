@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="470" viewBox="0 0 1400 470" role="img" aria-labelledby="title desc">
+<title id="title">DPN Incident Response Loop</title><desc id="desc">Observe, detect, contain, investigate, recover and learn.</desc>
+<defs><linearGradient id="bg" x1="0" x2="1"><stop stop-color="#06070a"/><stop offset="1" stop-color="#10080b"/></linearGradient></defs>
+<rect width="1400" height="470" rx="24" fill="url(#bg)"/>
+<text x="70" y="58" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="800" fill="#ff5360" letter-spacing="4">INCIDENT RESPONSE LOOP</text>
+<text x="70" y="90" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="750" fill="#f4f4f6">Response preserves evidence while restoring control.</text>
+<g transform="translate(700 255)">
+ <circle r="132" fill="none" stroke="#e50914" stroke-opacity=".17" stroke-width="2"/>
+ <circle r="88" fill="#0d0e12" stroke="#e50914" stroke-opacity=".34"/>
+ <text x="0" y="-8" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="900" fill="#fff">DPN</text>
+ <text x="0" y="18" text-anchor="middle" font-family="Consolas,monospace" font-size="9" font-weight="800" fill="#ff6571" letter-spacing="1.7">INCIDENT CORE</text>
+</g>
+<g font-family="Segoe UI,Arial,sans-serif" text-anchor="middle">
+ <g transform="translate(700 104)"><rect x="-92" y="-34" width="184" height="68" rx="14" fill="#0d0e12" stroke="#5edfff" stroke-opacity=".30"/><text y="-3" font-size="14" font-weight="850" fill="#fff">OBSERVE</text><text y="19" font-size="9" fill="#858b94">TELEMETRY • AUDIT</text></g>
+ <g transform="translate(1007 169)"><rect x="-92" y="-34" width="184" height="68" rx="14" fill="#0d0e12" stroke="#f0b24b" stroke-opacity=".30"/><text y="-3" font-size="14" font-weight="850" fill="#fff">DETECT</text><text y="19" font-size="9" fill="#858b94">SIGNAL • TRIAGE</text></g>
+ <g transform="translate(1090 330)"><rect x="-92" y="-34" width="184" height="68" rx="14" fill="#0d0e12" stroke="#e50914" stroke-opacity=".38"/><text y="-3" font-size="14" font-weight="850" fill="#fff">CONTAIN</text><text y="19" font-size="9" fill="#858b94">ISOLATE • REVOKE</text></g>
+ <g transform="translate(700 405)"><rect x="-92" y="-34" width="184" height="68" rx="14" fill="#0d0e12" stroke="#9b5cff" stroke-opacity=".32"/><text y="-3" font-size="14" font-weight="850" fill="#fff">INVESTIGATE</text><text y="19" font-size="9" fill="#858b94">EVIDENCE • ROOT CAUSE</text></g>
+ <g transform="translate(310 330)"><rect x="-92" y="-34" width="184" height="68" rx="14" fill="#0d0e12" stroke="#59d98e" stroke-opacity=".34"/><text y="-3" font-size="14" font-weight="850" fill="#fff">RECOVER</text><text y="19" font-size="9" fill="#858b94">RESTORE • VERIFY</text></g>
+ <g transform="translate(393 169)"><rect x="-92" y="-34" width="184" height="68" rx="14" fill="#0d0e12" stroke="#ff5b13" stroke-opacity=".31"/><text y="-3" font-size="14" font-weight="850" fill="#fff">LEARN</text><text y="19" font-size="9" fill="#858b94">FIX • HARDEN • UPDATE</text></g>
+</g>
+<g fill="none" stroke="#e50914" stroke-opacity=".22" stroke-width="2" stroke-dasharray="6 8">
+ <path d="M790 125Q905 128 950 152"/><path d="M1054 201Q1106 248 1099 291"/><path d="M1014 363Q900 406 792 408"/><path d="M608 405Q477 393 382 359"/><path d="M295 291Q282 236 345 201"/><path d="M450 139Q553 101 610 108"/>
+</g>
+<text x="70" y="447" font-family="Consolas,monospace" font-size="10" fill="#6f747d" letter-spacing="1.2">INCIDENTS ARE SYSTEM EVENTS • RESPONSE MUST PROTECT BOTH SERVICE AND EVIDENCE</text>
+<rect x="1" y="1" width="1398" height="468" rx="23" fill="none" stroke="#e50914" stroke-opacity=".14"/>
+</svg>
