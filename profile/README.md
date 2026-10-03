@@ -7,6 +7,14 @@
 </p>
 
 <p align="center">
+  <a href="https://dpn-technology.github.io/">
+    <img alt="DPN GitHub Command Center" src="https://img.shields.io/badge/ENTER-DPN%20GITHUB%20COMMAND%20CENTER-E50914?style=for-the-badge&logo=github">
+  </a>
+</p>
+
+<p align="center"><sub><strong>DPN GITHUB COMMAND CENTER</strong> · Public architecture · live GitHub telemetry · Trust Center · engineering standards · project discovery</sub></p>
+
+<p align="center">
   <a href="https://github.com/DPN-Technology/DPN-QB-FiveM-Scripts"><img alt="Public repository" src="https://img.shields.io/badge/Public%20Repository-FiveM%20Resource%20Library-111111?style=flat-square&logo=github"></a>
   <img alt="Engineering" src="https://img.shields.io/badge/Engineering-Active-E50914?style=flat-square">
   <img alt="Security" src="https://img.shields.io/badge/Security-Evidence--Driven-E50914?style=flat-square">
