@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="440" viewBox="0 0 1400 440" role="img" aria-labelledby="title desc">
+<title id="title">DPN Evidence Chain</title><desc id="desc">Idea to release through source, tests, security, artifacts and release evidence.</desc>
+<defs><linearGradient id="bg" x1="0" x2="1"><stop stop-color="#07080b"/><stop offset="1" stop-color="#10080b"/></linearGradient></defs>
+<rect width="1400" height="440" rx="24" fill="url(#bg)"/>
+<text x="70" y="58" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="800" fill="#ff5360" letter-spacing="4">EVIDENCE CHAIN</text>
+<text x="70" y="89" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="750" fill="#f4f4f6">A claim becomes stronger as the evidence behind it becomes stronger.</text>
+
+<path d="M155 237H1245" stroke="#e50914" stroke-opacity=".24" stroke-width="2"/>
+<g font-family="Segoe UI,Arial,sans-serif" text-anchor="middle">
+ <g transform="translate(160 237)"><circle r="58" fill="#0d0e12" stroke="#656872" stroke-opacity=".35"/><text y="-8" font-size="14" font-weight="850" fill="#fff">SOURCE</text><text y="14" font-size="9" fill="#7c818a">CODE + CONFIG</text></g>
+ <g transform="translate(378 237)"><circle r="58" fill="#0d0e12" stroke="#9b5cff" stroke-opacity=".34"/><text y="-8" font-size="14" font-weight="850" fill="#fff">TESTS</text><text y="14" font-size="9" fill="#7c818a">REPEATABLE CHECKS</text></g>
+ <g transform="translate(596 237)"><circle r="58" fill="#0d0e12" stroke="#e50914" stroke-opacity=".38"/><text y="-8" font-size="14" font-weight="850" fill="#fff">SECURITY</text><text y="14" font-size="9" fill="#7c818a">POLICY + SCAN</text></g>
+ <g transform="translate(814 237)"><circle r="58" fill="#0d0e12" stroke="#5edfff" stroke-opacity=".34"/><text y="-8" font-size="14" font-weight="850" fill="#fff">ARTIFACTS</text><text y="14" font-size="9" fill="#7c818a">BUILD + CHECKSUM</text></g>
+ <g transform="translate(1032 237)"><circle r="58" fill="#0d0e12" stroke="#ff5b13" stroke-opacity=".36"/><text y="-8" font-size="14" font-weight="850" fill="#fff">RELEASE</text><text y="14" font-size="9" fill="#7c818a">NOTES + VERSION</text></g>
+ <g transform="translate(1250 237)"><circle r="58" fill="#0d0e12" stroke="#59d98e" stroke-opacity=".40"/><text y="-8" font-size="14" font-weight="850" fill="#fff">PROOF</text><text y="14" font-size="9" fill="#7c818a">CLAIM + EVIDENCE</text></g>
+</g>
+<g fill="#e50914" opacity=".50"><path d="M225 231l20 6-20 6z"/><path d="M443 231l20 6-20 6z"/><path d="M661 231l20 6-20 6z"/><path d="M879 231l20 6-20 6z"/><path d="M1097 231l20 6-20 6z"/></g>
+
+<g transform="translate(70 340)">
+ <rect width="1260" height="54" rx="12" fill="#0c0d11" stroke="#e50914" stroke-opacity=".16"/>
+ <text x="630" y="33" text-anchor="middle" font-family="Consolas,monospace" font-size="10" fill="#7d828b" letter-spacing="1.2">NO SINGLE BADGE OR SCREENSHOT IS ENOUGH • EVIDENCE SHOULD COMPOUND</text>
+</g>
+<rect x="1" y="1" width="1398" height="438" rx="23" fill="none" stroke="#e50914" stroke-opacity=".14"/>
+</svg>
