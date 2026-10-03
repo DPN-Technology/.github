@@ -1,3 +1,17 @@
+## v3.7 — Product Worlds
+
+- Added a new full-width Product Worlds experience beneath the Visual Command Deck.
+- Added six cinematic product environments for Operational Control, Aqua Labs, Death the Developer, DPN One, Service Desk and Network Mapper.
+- Added a sticky subsystem selector that follows the currently visible product world.
+- Added per-world live public repository metadata for push age, release count, mapped visual evidence and primary language.
+- Added direct product dossier and public source actions from each world.
+- Added pointer-driven 3D product-window tilt, glow tracking and animated scan lines.
+- Added product-specific visual accents instead of reusing one generic card style.
+- Preserved evidence boundaries inside every world: actual project captures remain distinct from source-verified UI views.
+- Added Product Worlds to Presentation Mode.
+- Promoted Command Center assets to `app.v3.7.js` and `styles.v3.7.css`.
+- Bumped browser evidence/run caches and service-worker namespace to v3.7.
+
 ## v3.6 — Visual Overdrive
 
 - Rebuilt the opening experience around a new cinematic DPN Visual Command Deck.
