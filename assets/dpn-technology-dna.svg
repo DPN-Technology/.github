@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="560" viewBox="0 0 1500 560" role="img" aria-labelledby="title desc">
+<title id="title">DPN Technology DNA</title><desc id="desc">The engineering traits that define DPN Technology.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" x2="1"><stop stop-color="#030405"/><stop offset="1" stop-color="#110609"/></linearGradient>
+ <pattern id="binary" width="104" height="76" patternUnits="userSpaceOnUse"><text x="4" y="14" font-family="Consolas,monospace" font-size="10" fill="#e50914" fill-opacity=".08">01001000</text><text x="23" y="34" font-family="Consolas,monospace" font-size="10" fill="#ff3342" fill-opacity=".06">110010</text><text x="1" y="57" font-family="Consolas,monospace" font-size="10" fill="#e50914" fill-opacity=".07">00101101</text></pattern>
+</defs>
+<rect width="1500" height="560" rx="24" fill="url(#bg)"/><rect width="1500" height="560" rx="24" fill="url(#binary)"/>
+<text x="70" y="58" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="900" fill="#ff5966" letter-spacing="4">DPN TECHNOLOGY DNA</text>
+<text x="70" y="90" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="800" fill="#f4f4f6">The traits we want every serious DPN system to inherit.</text>
+
+<g font-family="Segoe UI,Arial,sans-serif">
+ <g transform="translate(70 135)"><rect width="320" height="120" rx="16" fill="#0d0e12" stroke="#e50914" stroke-opacity=".30"/><text x="22" y="34" font-size="16" font-weight="850" fill="#fff">PRACTICAL</text><text x="22" y="64" font-size="11" fill="#858b94">Solve a real problem first.</text><text x="22" y="88" font-family="Consolas,monospace" font-size="9" fill="#ff6571">USEFUL &gt; THEORETICAL</text></g>
+ <g transform="translate(410 135)"><rect width="320" height="120" rx="16" fill="#0d0e12" stroke="#e50914" stroke-opacity=".26"/><text x="22" y="34" font-size="16" font-weight="850" fill="#fff">OBSERVABLE</text><text x="22" y="64" font-size="11" fill="#858b94">State should be inspectable.</text><text x="22" y="88" font-family="Consolas,monospace" font-size="9" fill="#ff6571">NO FAKE HEALTH</text></g>
+ <g transform="translate(750 135)"><rect width="320" height="120" rx="16" fill="#0d0e12" stroke="#e50914" stroke-opacity=".26"/><text x="22" y="34" font-size="16" font-weight="850" fill="#fff">RECOVERABLE</text><text x="22" y="64" font-size="11" fill="#858b94">Plan the path back.</text><text x="22" y="88" font-family="Consolas,monospace" font-size="9" fill="#ff6571">ROLLBACK • RESTORE</text></g>
+ <g transform="translate(1090 135)"><rect width="320" height="120" rx="16" fill="#0d0e12" stroke="#e50914" stroke-opacity=".30"/><text x="22" y="34" font-size="16" font-weight="850" fill="#fff">SECURE</text><text x="22" y="64" font-size="11" fill="#858b94">Bound authority deliberately.</text><text x="22" y="88" font-family="Consolas,monospace" font-size="9" fill="#ff6571">TRUST IS EXPLICIT</text></g>
+
+ <g transform="translate(70 285)"><rect width="320" height="120" rx="16" fill="#0d0e12" stroke="#9b5cff" stroke-opacity=".30"/><text x="22" y="34" font-size="16" font-weight="850" fill="#fff">AUTOMATABLE</text><text x="22" y="64" font-size="11" fill="#858b94">Reduce repetitive work.</text><text x="22" y="88" font-family="Consolas,monospace" font-size="9" fill="#a88add">HUMAN + MACHINE</text></g>
+ <g transform="translate(410 285)"><rect width="320" height="120" rx="16" fill="#0d0e12" stroke="#5edfff" stroke-opacity=".28"/><text x="22" y="34" font-size="16" font-weight="850" fill="#fff">INTEGRATED</text><text x="22" y="64" font-size="11" fill="#858b94">Connect through contracts.</text><text x="22" y="88" font-family="Consolas,monospace" font-size="9" fill="#70dbe9">API • EVENTS • SDK</text></g>
+ <g transform="translate(750 285)"><rect width="320" height="120" rx="16" fill="#0d0e12" stroke="#ff5b13" stroke-opacity=".28"/><text x="22" y="34" font-size="16" font-weight="850" fill="#fff">EXPERIMENTAL</text><text x="22" y="64" font-size="11" fill="#858b94">Try ambitious ideas visibly.</text><text x="22" y="88" font-family="Consolas,monospace" font-size="9" fill="#d9855f">BUILD • TEST • LEARN</text></g>
+ <g transform="translate(1090 285)"><rect width="320" height="120" rx="16" fill="#0d0e12" stroke="#59d98e" stroke-opacity=".30"/><text x="22" y="34" font-size="16" font-weight="850" fill="#fff">EVIDENCE-DRIVEN</text><text x="22" y="64" font-size="11" fill="#858b94">Prove the important claims.</text><text x="22" y="88" font-family="Consolas,monospace" font-size="9" fill="#65d995">CLAIM + PROOF</text></g>
+</g>
+
+<path d="M118 462 L180 488 L153 505 L213 535" fill="none" stroke="#ff2637" stroke-width="2" opacity=".5"/>
+<path d="M1325 438 L1270 470 L1296 487 L1240 526" fill="none" stroke="#ff2637" stroke-width="2" opacity=".5"/>
+<text x="750" y="500" text-anchor="middle" font-family="Consolas,monospace" font-size="11" fill="#737882" letter-spacing="1.5">DEVELOP • PIONEER • NAVIGATE</text>
+<text x="750" y="525" text-anchor="middle" font-family="Consolas,monospace" font-size="9" fill="#5f646d" letter-spacing="1.2">THEME IS VISIBLE • ENGINEERING IS UNDERNEATH</text>
+<rect x="1" y="1" width="1498" height="558" rx="23" fill="none" stroke="#e50914" stroke-opacity=".16"/>
+</svg>
