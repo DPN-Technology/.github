@@ -35,6 +35,9 @@ This repository powers the public DPN Technology GitHub profile and defines reus
 | [Supply-Chain Security](SUPPLY_CHAIN_SECURITY.md) | Source-to-artifact integrity and verification |
 | [Release Evidence](RELEASE_EVIDENCE.md) | Source/build/runtime/release evidence definitions |
 | [Incident Response](INCIDENT_RESPONSE.md) | Evidence-preserving containment, recovery and learning |
+| [Reliability Standard](RELIABILITY_STANDARD.md) | Service objectives, health signals, degraded behavior and recovery |
+| [Data Handling Standard](DATA_HANDLING_STANDARD.md) | Data classification, access, retention, backup and logging |
+| [Integration Contract Standard](INTEGRATION_CONTRACT_STANDARD.md) | API/event lifecycle, compatibility, observability and retirement |
 | [Security Policy](SECURITY.md) | Vulnerability reporting and security guidance |
 | [Contribution Standard](CONTRIBUTING.md) | Evidence-backed contribution expectations |
 | [Support](SUPPORT.md) | Public project support and escalation |
@@ -47,6 +50,10 @@ This repository powers the public DPN Technology GitHub profile and defines reus
 | [Threat Model Template](templates/THREAT_MODEL_TEMPLATE.md) | Assets, actors, boundaries and abuse cases |
 | [Release Checklist](templates/RELEASE_CHECKLIST.md) | Release readiness and evidence |
 | [Third-Party License Template](templates/THIRD_PARTY_LICENSES_TEMPLATE.md) | Dependency and asset license tracking |
+| [SLO Template](templates/SLO_TEMPLATE.md) | Reliability target and health-signal definition |
+| [Data Flow Review](templates/DATA_FLOW_REVIEW.md) | Classification, access, storage and recovery review |
+| [Integration Contract Template](templates/INTEGRATION_CONTRACT_TEMPLATE.md) | Versioned API/event contract definition |
+| [Operational Runbook](templates/RUNBOOK_TEMPLATE.md) | Health, failure, isolation and recovery procedures |
 
 ## Community Defaults
 
