@@ -13,6 +13,11 @@
   <img alt="Systems" src="https://img.shields.io/badge/Systems-Local--First%20%7C%20Self--Hosted-111111?style=flat-square">
 </p>
 
+<!-- DPN-BINARY-STORM-TOP -->
+<p align="center">
+  <img src="../assets/dpn-binary-storm.svg" alt="DPN binary storm" width="100%">
+</p>
+
 ## Who We Are
 
 <p align="center">
@@ -53,6 +58,35 @@ The long-term direction is a connected DPN ecosystem where products can share co
 **Identity → Trust → Observability → Automation → Integration → Recovery**
 
 That means a DPN system should increasingly know **who is acting, what is happening, what is allowed, what changed, what evidence exists, and how to recover safely**.
+
+## Company Profile
+
+| | |
+| --- | --- |
+| **Company** | DPN Technology |
+| **Parent identity** | Develop Pioneer Navigate |
+| **Leadership** | Aaron “Diesel” Sherk — Chief Executive Officer |
+| **Primary focus** | Software, infrastructure, AI, automation, operational tooling, web systems, simulations and interactive technology |
+| **Engineering posture** | Hands-on, practical, local-first where useful, evidence-driven, security-aware and recovery-minded |
+| **Public GitHub posture** | Public work is documented openly; private development is intentionally not enumerated here |
+| **Core visual identity** | Black surfaces, DPN red, binary rain, red lightning, radar/topology forms and command-layer depth |
+| **Core slogan** | *We Develop what doesn’t exist. We Pioneer what comes next. We Navigate the future.* |
+
+### What You’ll Find Inside DPN Systems
+
+Across DPN projects, recurring building blocks include:
+
+| Capability | What it means in practice |
+| --- | --- |
+| **Operator surfaces** | Dashboards, consoles and command views that expose state instead of hiding it |
+| **Identity & access** | Users, devices, roles, clearance, sessions, trust and explicit authorization |
+| **Monitoring & observability** | Health, events, logs, audit, network state and operational evidence |
+| **Automation** | Workflows, approvals, scheduled operations, orchestration and repetitive-work reduction |
+| **Integration** | APIs, signed events, SDKs, webhooks and defined contracts between systems |
+| **Recovery** | Backup, restore, rollback, checkpoints, degraded modes and incident recovery |
+| **AI-assisted work** | Agents, research, memory, coding workflows and tool orchestration |
+| **Simulation** | Industrial, tactical and interactive systems used to model or teach complex work |
+| **Business operations** | Workforce, service, inventory, records, scheduling, administration and retail workflows |
 
 ## DPN Technology
 
@@ -121,6 +155,11 @@ The public DPN visual system deliberately uses:
 | **Purple / cyan variants** | Product-specific identities where DPN red should not erase the product’s own character |
 
 The intent is consistency without turning every application into the exact same interface.
+
+<!-- DPN-BINARY-STORM-ENGINEERING -->
+<p align="center">
+  <img src="../assets/dpn-binary-storm.svg" alt="DPN binary storm" width="100%">
+</p>
 
 ## DPN Command Fabric
 
@@ -231,6 +270,8 @@ The goal is not pretending failure never happens. The goal is keeping authority,
 | [Security Policy](../SECURITY.md) | Vulnerability reporting and security guidance |
 | [Contribution Standard](../CONTRIBUTING.md) | Reviewable, evidence-backed contribution expectations |
 | [Support](../SUPPORT.md) | Public project support and escalation guidance |
+| [Brand System](../BRAND_SYSTEM.md) | DPN black/red, binary rain, lightning, radar and visual identity rules |
+| [Public Repository Presentation](../PUBLIC_REPOSITORY_PRESENTATION.md) | README/storefront layout and truthful-public-claim guidance |
 
 ## Systems Doctrine
 
@@ -463,6 +504,29 @@ The company’s approach is to:
 7. **Keep experimenting** when existing tools do not fit the problem.
 
 DPN is not positioned as a collection of finished products pretending to be complete. Some work is mature, some is still being developed, and some is intentionally experimental. The profile and repository standards are designed to make that distinction visible.
+
+## What This Public Profile Does — and Does Not — Claim
+
+This page is intentionally ambitious in presentation and conservative in factual claims.
+
+### It does claim
+
+- DPN Technology is actively building software and systems across multiple engineering domains.
+- DPN uses both public and private repositories.
+- DPN maintains organization-level engineering, security, reliability, release and recovery standards.
+- DPN’s public GitHub work can be inspected through the repositories intentionally made public.
+- Aaron “Diesel” Sherk leads DPN Technology as CEO and remains involved in technical direction.
+
+### It does not automatically claim
+
+- that every private project is production-ready;
+- that a polished interface represents a live deployment;
+- that a security scanner equals a security certification;
+- that a prototype equals a finished product;
+- that source verification equals build/runtime verification;
+- that internal roadmap items are public services.
+
+DPN uses maturity labels, repository evidence and release documentation to keep those distinctions visible.
 
 ## Public / Private Boundary
 
