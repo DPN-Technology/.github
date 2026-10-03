@@ -44,3 +44,8 @@ DPN-Technology/DPN-Technology.github.io
 Copy the contents of this `command-center/` directory into the repository root. GitHub Pages organization sites use that repository name as the public site source.
 
 No GitHub Actions build is required by the site source itself.
+
+
+## Visual evidence
+
+The Command Center includes a typed visual evidence wall. Runtime/interface captures, source-derived UI views and project artwork are labeled separately so presentation does not overstate what has actually been executed or captured. Aqua Labs desktop views are currently source-derived from the current PySide6 UI code and are explicitly marked as non-runtime until real desktop screenshots can replace them.
