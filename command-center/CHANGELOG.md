@@ -1,3 +1,19 @@
+## v3.6 — Visual Overdrive
+
+- Rebuilt the opening experience around a new cinematic DPN Visual Command Deck.
+- Added six immediately visible product windows using actual captures and clearly labeled source-verified interfaces.
+- Added a central animated DPN System Core with orbit rings, scanning sweep and command-fabric link lines.
+- Added 3D pointer tilt, glow tracking and depth motion to command-deck product surfaces.
+- Added live public GitHub activity directly beneath the visual command deck.
+- Added live hero metrics for public repositories, release records, visual evidence and public signal state.
+- Added a third floating Aqua Labs product window to the hero.
+- Increased hero scale, DPN watermark depth, red energy/glow treatment and perspective.
+- Added a global scroll progress energy rail and section reveal transitions.
+- Added responsive command-deck layouts for tablet and mobile.
+- Preserved evidence labels so source-derived interfaces are not misrepresented as runtime captures.
+- Promoted Command Center assets to `app.v3.6.js` and `styles.v3.6.css`.
+- Bumped browser evidence/run caches and the service-worker namespace to v3.6.
+
 ## v3.5 — Capture Run Intelligence
 
 - Added an on-demand public GitHub Actions run-history scan for standardized runtime capture factories.
