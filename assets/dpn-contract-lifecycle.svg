@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="480" viewBox="0 0 1400 480" role="img" aria-labelledby="title desc">
+<title id="title">DPN Integration Contract Lifecycle</title><desc id="desc">Design, version, validate, observe, evolve and retire integration contracts.</desc>
+<defs><linearGradient id="bg" x1="0" x2="1"><stop stop-color="#06070a"/><stop offset="1" stop-color="#0f080b"/></linearGradient></defs>
+<rect width="1400" height="480" rx="24" fill="url(#bg)"/>
+<text x="70" y="58" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="800" fill="#ff5360" letter-spacing="4">INTEGRATION CONTRACT LIFECYCLE</text>
+<text x="70" y="90" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="750" fill="#f4f4f6">APIs and events are products too: they need identity, versioning, observability and retirement.</text>
+<path d="M150 250H1250" stroke="#e50914" stroke-opacity=".20" stroke-width="2"/>
+<g font-family="Segoe UI,Arial,sans-serif" text-anchor="middle">
+ <g transform="translate(165 250)"><circle r="62" fill="#0d0e12" stroke="#9b5cff" stroke-opacity=".34"/><text y="-9" font-size="14" font-weight="850" fill="#fff">DESIGN</text><text y="14" font-size="9" fill="#858b94">SCHEMA • AUTH</text></g>
+ <g transform="translate(380 250)"><circle r="62" fill="#0d0e12" stroke="#5edfff" stroke-opacity=".34"/><text y="-9" font-size="14" font-weight="850" fill="#fff">VERSION</text><text y="14" font-size="9" fill="#858b94">COMPATIBILITY</text></g>
+ <g transform="translate(595 250)"><circle r="62" fill="#0d0e12" stroke="#e50914" stroke-opacity=".38"/><text y="-9" font-size="14" font-weight="850" fill="#fff">VALIDATE</text><text y="14" font-size="9" fill="#858b94">TEST • POLICY</text></g>
+ <g transform="translate(810 250)"><circle r="62" fill="#0d0e12" stroke="#f0b24b" stroke-opacity=".34"/><text y="-9" font-size="14" font-weight="850" fill="#fff">OBSERVE</text><text y="14" font-size="9" fill="#858b94">HEALTH • ERRORS</text></g>
+ <g transform="translate(1025 250)"><circle r="62" fill="#0d0e12" stroke="#ff5b13" stroke-opacity=".34"/><text y="-9" font-size="14" font-weight="850" fill="#fff">EVOLVE</text><text y="14" font-size="9" fill="#858b94">DEPRECATE • MIGRATE</text></g>
+ <g transform="translate(1240 250)"><circle r="62" fill="#0d0e12" stroke="#59d98e" stroke-opacity=".38"/><text y="-9" font-size="14" font-weight="850" fill="#fff">RETIRE</text><text y="14" font-size="9" fill="#858b94">SUNSET • REMOVE</text></g>
+</g>
+<g fill="#e50914" opacity=".48"><path d="M239 244l20 6-20 6z"/><path d="M454 244l20 6-20 6z"/><path d="M669 244l20 6-20 6z"/><path d="M884 244l20 6-20 6z"/><path d="M1099 244l20 6-20 6z"/></g>
+<g transform="translate(250 360)"><rect width="900" height="56" rx="12" fill="#0d0e12" stroke="#e50914" stroke-opacity=".16"/><text x="450" y="34" text-anchor="middle" font-family="Consolas,monospace" font-size="10" fill="#777c85" letter-spacing="1.1">CONTRACTS SHOULD FAIL CLEARLY • VERSION DELIBERATELY • RETIRE CLEANLY</text></g>
+<rect x="1" y="1" width="1398" height="478" rx="23" fill="none" stroke="#e50914" stroke-opacity=".14"/>
+</svg>
