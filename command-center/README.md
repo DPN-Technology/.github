@@ -169,3 +169,17 @@ The Capture Factory now extends into DPN's simulation, game and public-web proje
 - **DPN Tool & Die Simulator** — uses the real Unreal Engine 5.8 project. Its manual factory intentionally requires a self-hosted interactive Windows x64 runner with Unreal Engine 5.8 and the Visual Studio 2022 C++ toolchain; it builds the editor target, generates the ShopFloor map and requests a real runtime high-resolution screenshot.
 
 Tool & Die's factory is installed but cannot execute on a stock GitHub-hosted runner. It must not be presented as runtime proof until a compatible self-hosted Unreal runner actually produces and commits the evidence manifest.
+
+
+## v3.2 capture expansion
+
+v3.2 packages the 16-product Capture Factory rollout as a versioned Command Center release.
+
+- added standardized factories for DPN Tool & Die Simulator, DPN War Simulator, MemeSpace and DPN Website;
+- added capture-runner labels to every public Capture Factory card;
+- Tool & Die is visibly marked **SELF-HOSTED WINDOWS · UNREAL 5.8** rather than being presented like a stock hosted capture job;
+- native X11, PySide6/Xvfb and Playwright runner classes are shown separately;
+- the Capture Factory still treats workflow installation and committed runtime evidence as separate facts;
+- the PWA shell now uses v3.2 app/style assets and a v3.2 cache namespace.
+
+The current standardized automation footprint is 16 public product repositories. Runtime manifests remain a separate execution milestone.
