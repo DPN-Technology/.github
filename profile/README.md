@@ -337,6 +337,10 @@ Read [Incident Response](../INCIDENT_RESPONSE.md).
 | [Threat Model Template](../templates/THREAT_MODEL_TEMPLATE.md) | Document assets, actors, trust boundaries and abuse cases |
 | [Release Checklist](../templates/RELEASE_CHECKLIST.md) | Validate builds, security, artifacts and recovery before release |
 | [Third-Party License Template](../templates/THIRD_PARTY_LICENSES_TEMPLATE.md) | Separate externally licensed components from DPN-owned code |
+| [SLO Template](../templates/SLO_TEMPLATE.md) | Define measurable service objectives and degraded behavior |
+| [Data Flow Review](../templates/DATA_FLOW_REVIEW.md) | Review classification, access, storage, retention and recovery |
+| [Integration Contract Template](../templates/INTEGRATION_CONTRACT_TEMPLATE.md) | Define versioned API/event contracts and error behavior |
+| [Operational Runbook](../templates/RUNBOOK_TEMPLATE.md) | Document health, failure, isolation, recovery and escalation |
 
 </details>
 
