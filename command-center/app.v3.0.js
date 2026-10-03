@@ -290,7 +290,8 @@
       [/dpn hr|hris/,"DPN-Human-Resources-Software"],
       [/watchtower/,"DPN-Watch-Tower"],
       [/dpn ai/,"DPN-AI"],
-      [/death the developer/,"DPN-Death-the-Developer"]
+      [/death the developer/,"DPN-Death-the-Developer"],
+      [/memespace/,"MemeSpace"]
     ];
     return pairs.find(([pattern])=>pattern.test(value))?.[1]||"";
   }
