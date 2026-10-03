@@ -245,6 +245,44 @@ Public contributions should be scoped, reviewable and evidence-backed. Pull requ
 
 See [CONTRIBUTING.md](../CONTRIBUTING.md) for the organization contribution standard.
 
+## Quality & Trust Operations
+
+<p align="center">
+  <img src="../assets/dpn-quality-gates.svg" alt="DPN quality gate system" width="100%">
+</p>
+
+DPN quality gates are intended to turn evidence into explicit promotion decisions. Architecture, source quality, security, testing, artifact integrity, release readiness and operational recovery are treated as separate gates because passing one does not prove the others.
+
+Read the [DPN Quality Gates standard](../QUALITY_GATES.md).
+
+### Software Supply-Chain Trust
+
+<p align="center">
+  <img src="../assets/dpn-supply-chain.svg" alt="DPN software supply-chain model" width="100%">
+</p>
+
+The preferred trust chain is:
+
+**Source → Dependencies → Build → Signing/Integrity → Release → Verification**
+
+That model keeps DPN-owned code, third-party components, build evidence and distributable artifacts connected without treating any one step as sufficient proof.
+
+Read [Software Supply-Chain Security](../SUPPLY_CHAIN_SECURITY.md).
+
+### Incident Response
+
+<p align="center">
+  <img src="../assets/dpn-incident-loop.svg" alt="DPN incident response loop" width="100%">
+</p>
+
+DPN incident response follows an evidence-preserving loop:
+
+**Observe → Detect → Contain → Investigate → Recover → Learn**
+
+Recovery is not complete until the restored state is verified and the lessons from the incident are converted into stronger controls, tests, monitoring or architecture.
+
+Read [Incident Response](../INCIDENT_RESPONSE.md).
+
 ## Engineering Toolkit
 
 <details>
