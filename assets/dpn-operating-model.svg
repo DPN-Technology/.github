@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="560" viewBox="0 0 1400 560" role="img" aria-labelledby="title desc">
+<title id="title">DPN Operating Model</title><desc id="desc">Four planes: product, control, evidence, and recovery.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#050609"/><stop offset=".55" stop-color="#090a0e"/><stop offset="1" stop-color="#13070b"/></linearGradient>
+ <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#fff" stroke-opacity=".024"/></pattern>
+</defs>
+<rect width="1400" height="560" rx="26" fill="url(#bg)"/><rect width="1400" height="560" rx="26" fill="url(#grid)"/>
+<text x="68" y="58" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="800" fill="#ff5360" letter-spacing="4">DPN OPERATING MODEL</text>
+<text x="68" y="91" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="750" fill="#f5f5f7">Four planes keep product delivery, control, evidence and recovery separate—but connected.</text>
+
+<g transform="translate(70 136)">
+ <rect width="1260" height="76" rx="14" fill="#0d0f14" stroke="#ff5b13" stroke-opacity=".26"/>
+ <rect width="6" height="76" rx="3" fill="#ff5b13"/>
+ <text x="28" y="31" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="850" fill="#fff">PRODUCT PLANE</text>
+ <text x="28" y="55" font-family="Consolas,monospace" font-size="10" fill="#858b94">USER EXPERIENCE • BUSINESS LOGIC • SIMULATION • OPERATIONS • AI INTERACTION</text>
+</g>
+
+<g transform="translate(70 230)">
+ <rect width="1260" height="76" rx="14" fill="#0d0f14" stroke="#e50914" stroke-opacity=".34"/>
+ <rect width="6" height="76" rx="3" fill="#e50914"/>
+ <text x="28" y="31" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="850" fill="#fff">CONTROL PLANE</text>
+ <text x="28" y="55" font-family="Consolas,monospace" font-size="10" fill="#858b94">IDENTITY • POLICY • AUTHORIZATION • ORCHESTRATION • INTEGRATION CONTRACTS</text>
+</g>
+
+<g transform="translate(70 324)">
+ <rect width="1260" height="76" rx="14" fill="#0d0f14" stroke="#5edfff" stroke-opacity=".28"/>
+ <rect width="6" height="76" rx="3" fill="#5edfff"/>
+ <text x="28" y="31" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="850" fill="#fff">EVIDENCE PLANE</text>
+ <text x="28" y="55" font-family="Consolas,monospace" font-size="10" fill="#858b94">TELEMETRY • AUDIT • TESTS • LOGS • PROVENANCE • RELEASE EVIDENCE</text>
+</g>
+
+<g transform="translate(70 418)">
+ <rect width="1260" height="76" rx="14" fill="#0d0f14" stroke="#59d98e" stroke-opacity=".30"/>
+ <rect width="6" height="76" rx="3" fill="#59d98e"/>
+ <text x="28" y="31" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="850" fill="#fff">RECOVERY PLANE</text>
+ <text x="28" y="55" font-family="Consolas,monospace" font-size="10" fill="#858b94">BACKUP • CHECKPOINT • ROLLBACK • RESTORE • DEGRADED MODE • CONTINUITY</text>
+</g>
+
+<g stroke="#e50914" stroke-opacity=".18" stroke-width="2" stroke-dasharray="6 9">
+ <path d="M1180 212v18"/><path d="M1180 306v18"/><path d="M1180 400v18"/>
+ <path d="M220 212v18"/><path d="M220 306v18"/><path d="M220 400v18"/>
+</g>
+<text x="68" y="530" font-family="Consolas,monospace" font-size="10" fill="#6e737c" letter-spacing="1.5">SEPARATE PLANES • EXPLICIT CONTRACTS • AUDITABLE CROSSINGS</text>
+<rect x="1" y="1" width="1398" height="558" rx="25" fill="none" stroke="#e50914" stroke-opacity=".15"/>
+</svg>
