@@ -513,3 +513,21 @@ The command-deck product surfaces preserve evidence vocabulary:
 - neither label implies production deployment or live operational state.
 
 The live activity panel is populated from the existing public repository metadata already acquired by the Command Center.
+
+
+## v3.7 product-world presentation architecture
+
+Product Worlds are static presentation surfaces backed by the Command Center's existing public repository and evidence state.
+
+Each world is associated with one public repository identifier. After the existing telemetry/evidence scan completes, the browser fills bounded fields such as:
+
+- latest public push age;
+- public release-record count;
+- mapped visual-evidence count;
+- primary repository language.
+
+World selection and pointer effects are local browser state only.
+
+The Product Worlds layer introduces no authenticated APIs, private repository discovery, production telemetry or server-side state.
+
+A world's visual proof label remains independent from its repository activity. Repository activity does not convert a source-verified interface into an actual runtime capture.
