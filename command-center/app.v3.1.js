@@ -1571,6 +1571,14 @@
     grid.querySelectorAll("[data-verify-evidence]").forEach(button=>button.addEventListener("click",()=>openEvidenceBySlug(button.dataset.verifyEvidence)));
   }
 
+  function captureRunnerLabel(repoName) {
+    const nativeX11=new Set(["DPN-OS","DPN-Death-the-Developer","DPN-War-Simulator"]);
+    if(repoName==="DPN-Tool-Die-Simulator")return "SELF-HOSTED WINDOWS · UNREAL 5.8";
+    if(repoName==="DPN-Aqua-Labs-Point-of-Sale-System")return "GITHUB LINUX · XVFB / PYSIDE6";
+    if(nativeX11.has(repoName))return "GITHUB LINUX · XVFB NATIVE";
+    return "GITHUB LINUX · PLAYWRIGHT";
+  }
+
   function renderCaptureFactory() {
     const grid=$("capture-factory-grid");
     if(!grid)return;
@@ -1599,6 +1607,7 @@
 
     grid.innerHTML=records.map(item=>{
       const ev=item.evidence;
+      const runner=captureRunnerLabel(item.repo.name);
       const status=ev?.error
         ? "PUBLIC TREE UNKNOWN"
         : item.manifest
@@ -1624,7 +1633,7 @@
           ${harness?`<a href="${escapeHtml(harness)}" target="_blank" rel="noreferrer">HARNESS <span>${escapeHtml(ev.paths.captureTool)}</span> ↗</a>`:""}
           ${manifest?`<a href="${escapeHtml(manifest)}" target="_blank" rel="noreferrer">MANIFEST <span>${escapeHtml(ev.paths.runtimeManifest)}</span> ↗</a>`:""}
         </div>
-        <footer><span>MANUAL DISPATCH</span><button type="button" data-capture-dossier="${escapeHtml(item.repo.name)}">OPEN DOSSIER</button></footer>
+        <footer><span>MANUAL DISPATCH · ${escapeHtml(runner)}</span><button type="button" data-capture-dossier="${escapeHtml(item.repo.name)}">OPEN DOSSIER</button></footer>
       </article>`;
     }).join("") || '<article class="capture-factory-loading">Public capture-factory state unavailable.</article>';
 
