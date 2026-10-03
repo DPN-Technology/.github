@@ -1,3 +1,15 @@
+## v3.2 — Capture Expansion
+
+- Expanded standardized capture automation from 12 to 16 public DPN product repositories.
+- Added Tool & Die Simulator, DPN War Simulator, MemeSpace and DPN Website capture factories.
+- Added real runner-class labels to Capture Factory cards.
+- Marked Tool & Die as a self-hosted Windows / Unreal Engine 5.8 capture path.
+- Added native X11 labels for DPN OS, Death the Developer and War Simulator.
+- Added PySide6/Xvfb labeling for Aqua Labs and Playwright labeling for browser/server products.
+- Promoted Command Center assets to `app.v3.2.js` and `styles.v3.2.css`.
+- Bumped the service-worker cache namespace to `dpn-command-center-v3.2`.
+- Preserved the evidence boundary: installed automation is not counted as executed runtime proof.
+
 ## v3.1 — Runtime Capture Factory
 
 - Added public Capture Factory discovery to the Command Center.
