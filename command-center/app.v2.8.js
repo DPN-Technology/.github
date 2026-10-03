@@ -1030,9 +1030,15 @@
       setTimeout(() => lctx.clearRect(0, 0, w, h), 250);
     }
 
+    let frameCount = 0;
     function frame(t) {
-      rain(t);
-      triggerLightning(t);
+      frameCount++;
+      const mode = document.documentElement.dataset.visualMode || "full";
+      const stormOff = document.documentElement.classList.contains("storm-off");
+      if (!stormOff && mode !== "low") {
+        if (mode === "full" || frameCount % 2 === 0) rain(t);
+        if (mode === "full" || frameCount % 2 === 0) triggerLightning(t);
+      }
       requestAnimationFrame(frame);
     }
 
