@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="500" viewBox="0 0 1400 500" role="img" aria-labelledby="title desc">
+<title id="title">DPN Engineering Capability Matrix</title><desc id="desc">A matrix of core DPN engineering capabilities.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07080b"/><stop offset="1" stop-color="#0f080b"/></linearGradient></defs>
+<rect width="1400" height="500" rx="24" fill="url(#bg)"/>
+<text x="70" y="58" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="800" fill="#ff5360" letter-spacing="4">ENGINEERING CAPABILITY MATRIX</text>
+<text x="70" y="90" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="750" fill="#f4f4f6">The organization is structured around systems, not just apps.</text>
+<g font-family="Segoe UI,Arial,sans-serif">
+ <g transform="translate(70 126)"><rect width="300" height="92" rx="14" fill="#0d0e12" stroke="#e50914" stroke-opacity=".24"/><text x="20" y="32" font-size="15" font-weight="850" fill="#fff">IDENTITY</text><text x="20" y="58" font-size="11" fill="#858b95">Auth, sessions, devices, roles</text></g>
+ <g transform="translate(390 126)"><rect width="300" height="92" rx="14" fill="#0d0e12" stroke="#e50914" stroke-opacity=".20"/><text x="20" y="32" font-size="15" font-weight="850" fill="#fff">OBSERVABILITY</text><text x="20" y="58" font-size="11" fill="#858b95">Health, events, audit, topology</text></g>
+ <g transform="translate(710 126)"><rect width="300" height="92" rx="14" fill="#0d0e12" stroke="#e50914" stroke-opacity=".20"/><text x="20" y="32" font-size="15" font-weight="850" fill="#fff">AUTOMATION</text><text x="20" y="58" font-size="11" fill="#858b95">Workflows, approvals, orchestration</text></g>
+ <g transform="translate(1030 126)"><rect width="300" height="92" rx="14" fill="#0d0e12" stroke="#e50914" stroke-opacity=".24"/><text x="20" y="32" font-size="15" font-weight="850" fill="#fff">RECOVERY</text><text x="20" y="58" font-size="11" fill="#858b95">Backup, restore, rollback, continuity</text></g>
+
+ <g transform="translate(70 238)"><rect width="300" height="92" rx="14" fill="#0d0e12" stroke="#9b5cff" stroke-opacity=".24"/><text x="20" y="32" font-size="15" font-weight="850" fill="#fff">AI AGENTS</text><text x="20" y="58" font-size="11" fill="#858b95">Plan, execute, review, evidence</text></g>
+ <g transform="translate(390 238)"><rect width="300" height="92" rx="14" fill="#0d0e12" stroke="#9b5cff" stroke-opacity=".20"/><text x="20" y="32" font-size="15" font-weight="850" fill="#fff">DEVELOPER TOOLS</text><text x="20" y="58" font-size="11" fill="#858b95">Code, browser, terminal, research</text></g>
+ <g transform="translate(710 238)"><rect width="300" height="92" rx="14" fill="#0d0e12" stroke="#9b5cff" stroke-opacity=".20"/><text x="20" y="32" font-size="15" font-weight="850" fill="#fff">KNOWLEDGE SYSTEMS</text><text x="20" y="58" font-size="11" fill="#858b95">Memory, retrieval, evidence, context</text></g>
+ <g transform="translate(1030 238)"><rect width="300" height="92" rx="14" fill="#0d0e12" stroke="#9b5cff" stroke-opacity=".24"/><text x="20" y="32" font-size="15" font-weight="850" fill="#fff">INTEGRATION</text><text x="20" y="58" font-size="11" fill="#858b95">APIs, events, bridges, SDKs</text></g>
+
+ <g transform="translate(70 350)"><rect width="300" height="92" rx="14" fill="#0d0e12" stroke="#ff5b13" stroke-opacity=".24"/><text x="20" y="32" font-size="15" font-weight="850" fill="#fff">DESKTOP / WEB</text><text x="20" y="58" font-size="11" fill="#858b95">Native, browser and hybrid surfaces</text></g>
+ <g transform="translate(390 350)"><rect width="300" height="92" rx="14" fill="#0d0e12" stroke="#ff5b13" stroke-opacity=".20"/><text x="20" y="32" font-size="15" font-weight="850" fill="#fff">INFRASTRUCTURE</text><text x="20" y="58" font-size="11" fill="#858b95">Servers, endpoints, networking, fleet</text></g>
+ <g transform="translate(710 350)"><rect width="300" height="92" rx="14" fill="#0d0e12" stroke="#ff5b13" stroke-opacity=".20"/><text x="20" y="32" font-size="15" font-weight="850" fill="#fff">SIMULATION</text><text x="20" y="58" font-size="11" fill="#858b95">Industrial, tactical, interactive systems</text></g>
+ <g transform="translate(1030 350)"><rect width="300" height="92" rx="14" fill="#0d0e12" stroke="#ff5b13" stroke-opacity=".24"/><text x="20" y="32" font-size="15" font-weight="850" fill="#fff">DOCUMENTATION</text><text x="20" y="58" font-size="11" fill="#858b95">Architecture, security, release, evidence</text></g>
+</g>
+<rect x="1" y="1" width="1398" height="498" rx="23" fill="none" stroke="#e50914" stroke-opacity=".14"/>
+</svg>
