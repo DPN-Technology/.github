@@ -112,6 +112,52 @@ That model exists to keep the presentation ambitious **without confusing ambitio
 
 These badges reflect only the currently public repository. They are intentionally not presented as an organization-wide health score.
 
+## Operating Model
+
+<p align="center">
+  <img src="../assets/dpn-operating-model.svg" alt="DPN operating model" width="100%">
+</p>
+
+The DPN operating model separates product delivery from the planes that make it controllable and trustworthy:
+
+- **Product Plane** — what users interact with and what the system actually does.
+- **Control Plane** — identity, policy, authorization, orchestration and integration.
+- **Evidence Plane** — telemetry, tests, audit, provenance and release evidence.
+- **Recovery Plane** — backup, checkpointing, rollback, restoration and continuity.
+
+That separation makes it easier to improve one concern without burying it inside every application.
+
+## Evidence Chain
+
+<p align="center">
+  <img src="../assets/dpn-evidence-chain.svg" alt="DPN evidence chain" width="100%">
+</p>
+
+DPN treats evidence as cumulative. Source, tests, security review, build artifacts and release documentation each strengthen a claim—but none should be treated as a substitute for the others.
+
+## Resilience Model
+
+<p align="center">
+  <img src="../assets/dpn-resilience-model.svg" alt="DPN resilience model" width="100%">
+</p>
+
+A resilient DPN system should make transitions explicit:
+
+**Normal → Degraded → Isolated → Recovery → Restored**
+
+The goal is not pretending failure never happens. The goal is keeping authority, evidence and recovery paths intact when it does.
+
+## Organization Engineering Standards
+
+| Standard | Purpose |
+| --- | --- |
+| [Engineering Standard](../ENGINEERING_STANDARD.md) | Maturity, trust boundaries, observability, integration and recovery expectations |
+| [Dependency Policy](../DEPENDENCY_POLICY.md) | Third-party selection, commercial-use hygiene and license tracking |
+| [Release Evidence Standard](../RELEASE_EVIDENCE.md) | Source/build/runtime/release verification and artifact expectations |
+| [Security Policy](../SECURITY.md) | Vulnerability reporting and security guidance |
+| [Contribution Standard](../CONTRIBUTING.md) | Reviewable, evidence-backed contribution expectations |
+| [Support](../SUPPORT.md) | Public project support and escalation guidance |
+
 ## Systems Doctrine
 
 | Principle | DPN interpretation |
