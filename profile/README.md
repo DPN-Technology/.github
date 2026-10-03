@@ -46,6 +46,73 @@ It contains an expanding collection of QBCore, hybrid and standalone FiveM resou
   </a>
 </p>
 
+<!-- DPN-ADVANCED-SYSTEMS:START -->
+
+## DPN Command Fabric
+
+<p align="center">
+  <img src="../assets/dpn-command-fabric.svg" alt="DPN command fabric" width="100%">
+</p>
+
+DPN systems are designed around a shared operating model rather than isolated applications:
+
+- **Identity & Trust** decides who or what may act.
+- **Observability** records what is happening and why.
+- **Automation** moves approved work forward.
+- **Recovery** provides a deliberate path back to a known state.
+- **Applications and experiences** sit on top of those capabilities instead of reimplementing them independently.
+
+This is the direction of the platform: connected systems with explicit control planes, observable state, bounded authority and recoverable failure.
+
+## Engineering Capability Matrix
+
+<p align="center">
+  <img src="../assets/dpn-capability-matrix.svg" alt="DPN engineering capability matrix" width="100%">
+</p>
+
+The organization works across infrastructure, software, AI and simulation, but the underlying engineering capabilities are intentionally reusable. Identity, telemetry, automation, recovery, integration and evidence should become common building blocks rather than one-off implementations.
+
+## Trust, Security & Recovery
+
+<p align="center">
+  <img src="../assets/dpn-trust-stack.svg" alt="DPN trust and recovery stack" width="100%">
+</p>
+
+DPN treats security and recovery as one system. A control that can block an action but cannot explain it, audit it or recover from failure is incomplete.
+
+| Layer | Design intent |
+| --- | --- |
+| **Identity & Authentication** | Establish the actor: user, service, device or workload |
+| **Authorization & Policy** | Bound what the actor may do and under which conditions |
+| **Audit & Evidence** | Preserve the record of privileged and material actions |
+| **Integrity & Supply Chain** | Track dependencies, provenance, signing and externally licensed components |
+| **Recovery & Continuity** | Design rollback, restore and degraded operation before failure occurs |
+
+## Public Engineering Telemetry
+
+<p align="center">
+  <img alt="Public repo last commit" src="https://img.shields.io/github/last-commit/DPN-Technology/DPN-QB-FiveM-Scripts?style=for-the-badge&label=PUBLIC%20REPO%20LAST%20COMMIT">
+  <img alt="Public repo issues" src="https://img.shields.io/github/issues/DPN-Technology/DPN-QB-FiveM-Scripts?style=for-the-badge&label=OPEN%20ISSUES">
+  <img alt="Public repo size" src="https://img.shields.io/github/repo-size/DPN-Technology/DPN-QB-FiveM-Scripts?style=for-the-badge&label=REPOSITORY%20SIZE">
+</p>
+
+These badges reflect only the currently public repository. They are intentionally not presented as an organization-wide health score.
+
+## Systems Doctrine
+
+| Principle | DPN interpretation |
+| --- | --- |
+| **Truth over theater** | Visual polish should make real state easier to understand, not manufacture confidence |
+| **Bounded control** | Privileged actions should have explicit authority, scope and auditability |
+| **Evidence attached** | Tests, logs, screenshots, checksums and release artifacts should support important claims |
+| **Recoverability by design** | Backups, rollback, checkpointing and restoration are planned capabilities |
+| **Loose coupling** | Integration should happen through stable contracts, events or APIs rather than hidden dependencies |
+| **Commercial-use hygiene** | Third-party components and licenses should be tracked separately from DPN-owned code |
+| **Operator clarity** | Interfaces should make state, risk and next actions obvious |
+| **Progressive hardening** | Projects may begin as prototypes, but maturity should be visible and documented as controls improve |
+
+<!-- DPN-ADVANCED-SYSTEMS:END -->
+
 ## Engineering Principles
 
 <table>
@@ -104,7 +171,7 @@ Every system should answer six questions:
 
 Security issues should **not** be posted as public issues when disclosure could expose users, credentials, infrastructure or sensitive implementation details.
 
-Use the repository's **Security** tab and private vulnerability reporting where available. Repository-specific `SECURITY.md` files take precedence over organization defaults.
+Use the repository's **Security** tab and private vulnerability reporting where available. Repository-specific `SECURITY.md` files take precedence over the [organization security policy](../SECURITY.md).
 
 ## Contributing
 
@@ -116,7 +183,35 @@ Public contributions should be scoped, reviewable and evidence-backed. Pull requ
 - security or dependency impact;
 - rollback considerations when applicable.
 
-See the organization contribution guidance in the `.github` repository once published.
+See [CONTRIBUTING.md](../CONTRIBUTING.md) for the organization contribution standard.
+
+## Start Here
+
+<table>
+<tr>
+<td width="33%">
+
+### Explore public source
+
+Open the [DPN FiveM Resource Library](https://github.com/DPN-Technology/DPN-QB-FiveM-Scripts) to inspect public code, architecture, documentation and project structure.
+
+</td>
+<td width="33%">
+
+### Report a security issue
+
+Use the affected repository's Security tab and follow the [organization security policy](../SECURITY.md). Do not publish exploit details in a normal issue.
+
+</td>
+<td width="33%">
+
+### Contribute
+
+Read [CONTRIBUTING.md](../CONTRIBUTING.md) and keep changes focused, evidence-backed and reviewable.
+
+</td>
+</tr>
+</table>
 
 ## Public / Private Boundary
 
