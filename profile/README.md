@@ -245,6 +245,48 @@ Public contributions should be scoped, reviewable and evidence-backed. Pull requ
 
 See [CONTRIBUTING.md](../CONTRIBUTING.md) for the organization contribution standard.
 
+## Reliability, Data & Integration
+
+### Reliability as an operating contract
+
+<p align="center">
+  <img src="../assets/dpn-reliability-model.svg" alt="DPN reliability operating model" width="100%">
+</p>
+
+DPN reliability work is organized around **service objectives, real health signals, explicit degraded behavior, risk-aware change velocity, recovery and learning**.
+
+A green interface is not a reliability signal by itself. Health should come from measurements that can explain what the system is doing.
+
+Read the [Reliability Standard](../RELIABILITY_STANDARD.md).
+
+### Data handling by sensitivity
+
+<p align="center">
+  <img src="../assets/dpn-data-handling.svg" alt="DPN data handling model" width="100%">
+</p>
+
+Data controls should match the value and sensitivity of the information being handled. DPN uses a simple public model:
+
+**Public → Internal → Restricted → Sensitive / Secret**
+
+Classification should drive access, encryption, retention, export, backup and incident-response decisions.
+
+Read the [Data Handling Standard](../DATA_HANDLING_STANDARD.md).
+
+### Integration contracts have a lifecycle
+
+<p align="center">
+  <img src="../assets/dpn-contract-lifecycle.svg" alt="DPN integration contract lifecycle" width="100%">
+</p>
+
+DPN treats durable APIs, events and SDK contracts as products with their own lifecycle:
+
+**Design → Version → Validate → Observe → Evolve → Retire**
+
+The objective is to avoid silent breaking changes, invisible consumers and integrations that cannot explain failure.
+
+Read the [Integration Contract Standard](../INTEGRATION_CONTRACT_STANDARD.md).
+
 ## Quality & Trust Operations
 
 <p align="center">
