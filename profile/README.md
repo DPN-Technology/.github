@@ -88,6 +88,20 @@ DPN treats security and recovery as one system. A control that can block an acti
 | **Integrity & Supply Chain** | Track dependencies, provenance, signing and externally licensed components |
 | **Recovery & Continuity** | Design rollback, restore and degraded operation before failure occurs |
 
+## Maturity & Release Evidence
+
+<p align="center">
+  <img src="../assets/dpn-maturity-model.svg" alt="DPN maturity model" width="100%">
+</p>
+
+DPN does not treat every repository or feature as equally mature. The intended progression is:
+
+**Concept → Prototype → Development → Preview → Release**
+
+Moving right requires stronger evidence: repeatable tests, security review, architecture documentation, known limitations, release artifacts and recovery/rollback considerations.
+
+That model exists to keep the presentation ambitious **without confusing ambition with proof**.
+
 ## Public Engineering Telemetry
 
 <p align="center">
@@ -228,6 +242,8 @@ DPN Technology uses both public and private repositories.
 | **Public source** | [DPN FiveM Resource Library](https://github.com/DPN-Technology/DPN-QB-FiveM-Scripts) |
 | **Security** | Repository Security tabs and repository-specific security policies |
 | **Issues** | Use the relevant public repository issue tracker |
+| **Support** | [Organization support guidance](../SUPPORT.md) |
+| **Contributing** | [Organization contribution standard](../CONTRIBUTING.md) |
 | **Releases** | Use the relevant repository Releases page |
 
 ---
