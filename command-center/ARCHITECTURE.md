@@ -496,3 +496,20 @@ valid public manifest + referenced image
 ```
 
 GitHub API failure or rate limiting is represented as unknown. It must not be translated into a failed workflow claim.
+
+
+## v3.6 visual presentation layer
+
+The Visual Command Deck is a presentation layer over the existing browser-only Command Center architecture.
+
+It uses existing local public assets plus the same already-loaded public GitHub repository metadata. No new private API, server, database or credential boundary is introduced.
+
+Pointer tilt, glow tracking, reveal motion and scroll progress are local browser effects. Reduced-motion preferences disable continuous decorative motion where appropriate.
+
+The command-deck product surfaces preserve evidence vocabulary:
+
+- actual capture = existing project/output capture;
+- source-verified = interface presentation derived from inspected public source;
+- neither label implies production deployment or live operational state.
+
+The live activity panel is populated from the existing public repository metadata already acquired by the Command Center.
