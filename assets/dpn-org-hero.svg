@@ -1,18 +1,63 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="430" viewBox="0 0 1400 430" role="img" aria-labelledby="title desc">
-<title id="title">DPN Technology</title><desc id="desc">Develop. Pioneer. Navigate. Software, infrastructure, AI and interactive systems.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="520" viewBox="0 0 1600 520" role="img" aria-labelledby="title desc">
+<title id="title">DPN Technology</title><desc id="desc">Develop. Pioneer. Navigate. Black and red DPN Technology identity with binary rain and red lightning.</desc>
 <defs>
-  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#030406"/><stop offset=".48" stop-color="#09090d"/><stop offset="1" stop-color="#130509"/></linearGradient>
-  <radialGradient id="glow" cx=".74" cy=".46" r=".58"><stop stop-color="#e50914" stop-opacity=".27"/><stop offset="1" stop-color="#e50914" stop-opacity="0"/></radialGradient>
-  <linearGradient id="redline" x1="0" x2="1"><stop stop-color="#5d070c"/><stop offset=".45" stop-color="#ff2637"/><stop offset="1" stop-color="#5d070c"/></linearGradient>
-  <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0V42" fill="none" stroke="#ffffff" stroke-opacity=".028"/></pattern>
-  <filter id="glowf"><feGaussianBlur stdDeviation="7"/></filter>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#010203"/><stop offset=".45" stop-color="#06070a"/><stop offset=".78" stop-color="#0c0305"/><stop offset="1" stop-color="#160407"/></linearGradient>
+  <radialGradient id="coreGlow" cx=".72" cy=".43" r=".55"><stop stop-color="#e50914" stop-opacity=".32"/><stop offset=".6" stop-color="#7a0710" stop-opacity=".08"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+  <linearGradient id="bolt" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff7b84"/><stop offset=".32" stop-color="#ff1f32"/><stop offset="1" stop-color="#7a0710"/></linearGradient>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#fff" stroke-opacity=".022"/></pattern>
+  <pattern id="binary" width="98" height="84" patternUnits="userSpaceOnUse">
+    <text x="4" y="14" font-family="Consolas,monospace" font-size="12" fill="#e50914" fill-opacity=".14">01001101</text>
+    <text x="18" y="34" font-family="Consolas,monospace" font-size="11" fill="#ff3342" fill-opacity=".10">1011010</text>
+    <text x="1" y="55" font-family="Consolas,monospace" font-size="12" fill="#e50914" fill-opacity=".12">00101101</text>
+    <text x="30" y="76" font-family="Consolas,monospace" font-size="10" fill="#ff5360" fill-opacity=".08">11001</text>
+  </pattern>
+  <filter id="redGlow"><feGaussianBlur stdDeviation="7"/></filter>
+  <filter id="boltGlow"><feGaussianBlur stdDeviation="4"/></filter>
 </defs>
-<rect width="1400" height="430" rx="28" fill="url(#bg)"/><rect width="1400" height="430" rx="28" fill="url(#grid)"/><rect width="1400" height="430" rx="28" fill="url(#glow)"/>
-<g opacity=".13" fill="#e50914" font-family="Consolas,monospace" font-size="16"><text x="895" y="48">01000100 01010000 01001110</text><text x="980" y="76">01010100 01000101 01000011 01001000</text><text x="846" y="358">01000100 01000101 01010110 01000101 01001100 01001111 01010000</text><text x="984" y="388">01010000 01001001 01001111 01001110 01000101 01000101 01010010</text></g>
-<g transform="translate(1110 214)" fill="none" stroke="#e50914"><circle r="124" stroke-opacity=".16"/><circle r="88" stroke-opacity=".24" stroke-dasharray="7 11"/><circle r="51" stroke-opacity=".38"/><path d="M-124 0H124M0-124V124" stroke-opacity=".12"/><path d="M0 0L101-58" stroke-width="2" stroke-opacity=".55"/><circle cx="101" cy="-58" r="6" fill="#ff3342" stroke="none"/><circle cx="-66" cy="52" r="4" fill="#ff3342" stroke="none" opacity=".8"/><circle r="18" fill="#1a070a" stroke-opacity=".65"/></g>
-<path d="M714 40 L763 117 L741 130 L796 192 L758 214 L822 298" fill="none" stroke="url(#redline)" stroke-width="2" opacity=".42" filter="url(#glowf)"/>
-<rect x="74" y="73" width="56" height="5" rx="2.5" fill="#e50914"/><text x="74" y="118" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="800" fill="#ff5360" letter-spacing="5">DPN TECHNOLOGY</text>
-<text x="74" y="192" font-family="Segoe UI,Arial,sans-serif" font-size="56" font-weight="900" fill="#f7f7f9">Develop. Pioneer. Navigate.</text><text x="74" y="240" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="500" fill="#a0a1aa">Software • Infrastructure • AI • Interactive Systems</text>
-<g transform="translate(74 292)"><rect width="172" height="44" rx="10" fill="#0d0e12" stroke="#e50914" stroke-opacity=".30"/><text x="86" y="28" text-anchor="middle" font-family="Consolas,monospace" font-size="12" font-weight="800" fill="#f2f2f5">BUILD WITH EVIDENCE</text><rect x="188" width="168" height="44" rx="10" fill="#0d0e12" stroke="#e50914" stroke-opacity=".22"/><text x="272" y="28" text-anchor="middle" font-family="Consolas,monospace" font-size="12" font-weight="800" fill="#f2f2f5">SECURE BY DESIGN</text><rect x="372" width="178" height="44" rx="10" fill="#0d0e12" stroke="#e50914" stroke-opacity=".18"/><text x="461" y="28" text-anchor="middle" font-family="Consolas,monospace" font-size="12" font-weight="800" fill="#f2f2f5">RECOVERABLE SYSTEMS</text></g>
-<text x="74" y="382" font-family="Consolas,monospace" font-size="12" font-weight="700" fill="#676a73" letter-spacing="2">DPN://ORGANIZATION • ENGINEERING THE NEXT OPERATING LAYER</text><rect x="1" y="1" width="1398" height="428" rx="27" fill="none" stroke="#e50914" stroke-opacity=".24"/>
+
+<rect width="1600" height="520" rx="28" fill="url(#bg)"/>
+<rect width="1600" height="520" rx="28" fill="url(#grid)"/>
+<rect width="1600" height="520" rx="28" fill="url(#binary)"/>
+<rect width="1600" height="520" rx="28" fill="url(#coreGlow)"/>
+
+<g opacity=".28">
+  <path d="M970 22 L1034 112 L1000 130 L1068 205 L1038 225 L1118 332 L1080 348 L1155 485" fill="none" stroke="#ff1f32" stroke-width="9" filter="url(#boltGlow)"/>
+  <path d="M970 22 L1034 112 L1000 130 L1068 205 L1038 225 L1118 332 L1080 348 L1155 485" fill="none" stroke="url(#bolt)" stroke-width="3"/>
+  <path d="M1338 63 L1295 128 L1316 145 L1260 207 L1282 225 L1217 312" fill="none" stroke="#ff1f32" stroke-width="6" filter="url(#boltGlow)"/>
+  <path d="M1338 63 L1295 128 L1316 145 L1260 207 L1282 225 L1217 312" fill="none" stroke="url(#bolt)" stroke-width="2"/>
+</g>
+
+<g opacity=".18" fill="#ff2637" font-family="Consolas,monospace" font-size="15">
+  <text x="1170" y="70">01000100 01010000 01001110</text>
+  <text x="1215" y="96">01000100 01000101 01010110</text>
+  <text x="1150" y="420">01010000 01001001 01001111 01001110 01000101 01000101 01010010</text>
+  <text x="1230" y="448">01001110 01000001 01010110 01001001 01000111 01000001 01010100 01000101</text>
+</g>
+
+<g transform="translate(1315 260)" fill="none" stroke="#e50914">
+  <circle r="150" stroke-opacity=".15"/>
+  <circle r="112" stroke-opacity=".24" stroke-dasharray="7 12"/>
+  <circle r="74" stroke-opacity=".34"/>
+  <circle r="36" stroke-opacity=".48"/>
+  <path d="M-150 0H150M0-150V150" stroke-opacity=".11"/>
+  <path d="M0 0L116-68" stroke-width="2.5" stroke-opacity=".62"/>
+  <circle cx="116" cy="-68" r="7" fill="#ff3342" stroke="none"/>
+  <circle cx="-84" cy="51" r="4" fill="#ff3342" stroke="none" opacity=".75"/>
+</g>
+
+<rect x="78" y="72" width="64" height="5" rx="2.5" fill="#e50914"/>
+<text x="78" y="116" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="900" fill="#ff5966" letter-spacing="6">DPN TECHNOLOGY</text>
+<text x="78" y="195" font-family="Segoe UI,Arial,sans-serif" font-size="64" font-weight="900" fill="#f8f8fa">Develop. Pioneer. Navigate.</text>
+<text x="78" y="240" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="600" fill="#a4a7b0">We Develop what doesn’t exist. We Pioneer what comes next. We Navigate the future.</text>
+<text x="78" y="282" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="500" fill="#7f838d">Software • Infrastructure • AI • Automation • Operations • Interactive Systems</text>
+
+<g transform="translate(78 332)">
+  <rect width="195" height="50" rx="10" fill="#0a0b0f" stroke="#e50914" stroke-opacity=".38"/><text x="97" y="31" text-anchor="middle" font-family="Consolas,monospace" font-size="11" font-weight="900" fill="#f4f4f6">EVIDENCE-DRIVEN</text>
+  <rect x="210" width="190" height="50" rx="10" fill="#0a0b0f" stroke="#e50914" stroke-opacity=".30"/><text x="305" y="31" text-anchor="middle" font-family="Consolas,monospace" font-size="11" font-weight="900" fill="#f4f4f6">SECURE BY DESIGN</text>
+  <rect x="415" width="200" height="50" rx="10" fill="#0a0b0f" stroke="#e50914" stroke-opacity=".26"/><text x="515" y="31" text-anchor="middle" font-family="Consolas,monospace" font-size="11" font-weight="900" fill="#f4f4f6">RECOVERABLE SYSTEMS</text>
+  <rect x="630" width="190" height="50" rx="10" fill="#0a0b0f" stroke="#e50914" stroke-opacity=".22"/><text x="725" y="31" text-anchor="middle" font-family="Consolas,monospace" font-size="11" font-weight="900" fill="#f4f4f6">LOCAL-FIRST</text>
+</g>
+
+<text x="78" y="446" font-family="Consolas,monospace" font-size="12" font-weight="800" fill="#6c7079" letter-spacing="2.2">DPN://ORGANIZATION • BUILDING THE OPERATING LAYER BETWEEN PEOPLE, SOFTWARE, SYSTEMS &amp; AUTOMATION</text>
+<rect x="1" y="1" width="1598" height="518" rx="27" fill="none" stroke="#e50914" stroke-opacity=".30"/>
 </svg>
