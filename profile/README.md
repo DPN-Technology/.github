@@ -13,6 +13,47 @@
   <img alt="Systems" src="https://img.shields.io/badge/Systems-Local--First%20%7C%20Self--Hosted-111111?style=flat-square">
 </p>
 
+## Who We Are
+
+<p align="center">
+  <img src="../assets/dpn-company-core.svg" alt="DPN Technology company core" width="100%">
+</p>
+
+**DPN Technology** is a hands-on technology company led by **Aaron “Diesel” Sherk, Chief Executive Officer**.
+
+DPN sits under the broader **Develop Pioneer Navigate** identity and is built around a simple idea: technology should be useful, understandable, controllable, and ambitious enough to solve problems that off-the-shelf tools do not solve well.
+
+The company works across software, infrastructure, AI, automation, operational tooling, web systems, simulations, and interactive experiences. Those disciplines are intentionally connected. A monitoring system can influence operations. Identity can control software access. AI can assist engineering. Recovery can be built into infrastructure instead of added after failure. The goal is not to collect unrelated applications—the goal is to build a **coherent technology ecosystem**.
+
+### Leadership
+
+| | |
+| --- | --- |
+| **Chief Executive Officer** | Aaron “Diesel” Sherk |
+| **Role** | Company direction, technical priorities, product development and hands-on engineering |
+| **Parent identity** | Develop Pioneer Navigate |
+| **Operating style** | Hands-on, practical, experimental, systems-oriented |
+| **Core slogan** | *We Develop what doesn’t exist. We Pioneer what comes next. We Navigate the future.* |
+
+### What DPN Builds
+
+DPN Technology works on problems that sit between people, software, infrastructure and automation:
+
+- **Custom business software** — records, approvals, intake, scheduling, inventory, workforce and operational workflows.
+- **Infrastructure and control systems** — monitoring, network visibility, endpoint control, systems administration, integration and recovery.
+- **AI and developer systems** — agents, research, coding workflows, memory, automation and model integration.
+- **Web and interactive systems** — public websites, portals, interfaces, communities and experimental digital experiences.
+- **Simulation systems** — industrial, tactical and interactive simulation used for learning, experimentation and systems modeling.
+- **Integration layers** — APIs, events, SDKs and control-plane patterns that allow DPN systems to work together without hiding dependencies.
+
+### What DPN Is Building Toward
+
+The long-term direction is a connected DPN ecosystem where products can share common foundations instead of reinventing them:
+
+**Identity → Trust → Observability → Automation → Integration → Recovery**
+
+That means a DPN system should increasingly know **who is acting, what is happening, what is allowed, what changed, what evidence exists, and how to recover safely**.
+
 ## DPN Technology
 
 **DPN Technology** is an engineering organization focused on building practical software, infrastructure, AI tooling, operational systems, and interactive experiences.
@@ -47,6 +88,39 @@ It contains an expanding collection of QBCore, hybrid and standalone FiveM resou
 </p>
 
 <!-- DPN-ADVANCED-SYSTEMS:START -->
+
+## DPN Technology DNA
+
+<p align="center">
+  <img src="../assets/dpn-technology-dna.svg" alt="DPN Technology engineering DNA" width="100%">
+</p>
+
+The visual identity is intentionally aggressive—black surfaces, red lightning, binary rain, radar energy and high-contrast command interfaces—but the deeper DPN theme is behavioral:
+
+- **Practical** — start with the real job that needs to be done.
+- **Observable** — important state should be inspectable, not implied.
+- **Recoverable** — every serious system should have a path back.
+- **Secure** — authority should be explicit and bounded.
+- **Automatable** — repetitive work should be reduced where doing so is safe.
+- **Integrated** — systems should connect through visible contracts.
+- **Experimental** — ambitious ideas are welcome when their maturity is clearly labeled.
+- **Evidence-driven** — important claims should be supported by tests, artifacts, logs, screenshots, checksums or other relevant evidence.
+
+### DPN Visual Language
+
+The public DPN visual system deliberately uses:
+
+| Element | Meaning |
+| --- | --- |
+| **Black surfaces** | Command focus, depth, and minimal distraction |
+| **DPN red** | Authority, active control, alerts and identity |
+| **Binary 1s / 0s** | The digital foundation under every DPN system |
+| **Red lightning** | Energy, change, execution and the “build what does not exist” mindset |
+| **Radar / topology forms** | Visibility, awareness and connected systems |
+| **Glass / metal depth** | Layered control surfaces rather than flat decoration |
+| **Purple / cyan variants** | Product-specific identities where DPN red should not erase the product’s own character |
+
+The intent is consistency without turning every application into the exact same interface.
 
 ## DPN Command Fabric
 
@@ -371,6 +445,24 @@ Read [CONTRIBUTING.md](../CONTRIBUTING.md) and keep changes focused, evidence-ba
 </td>
 </tr>
 </table>
+
+## Why DPN Exists
+
+Many technology problems are not caused by the absence of software. They come from disconnected systems, repetitive work, unclear state, poor recovery, fragmented information, or tools that do not match how people actually operate.
+
+DPN Technology is built around closing those gaps.
+
+The company’s approach is to:
+
+1. **Understand the real process** before deciding what to automate.
+2. **Build the smallest useful system** that proves the direction.
+3. **Make important state visible** so operators are not guessing.
+4. **Connect systems deliberately** instead of creating hidden coupling.
+5. **Add security and recovery as architecture**, not decoration.
+6. **Advance maturity visibly** from concept through release.
+7. **Keep experimenting** when existing tools do not fit the problem.
+
+DPN is not positioned as a collection of finished products pretending to be complete. Some work is mature, some is still being developed, and some is intentionally experimental. The profile and repository standards are designed to make that distinction visible.
 
 ## Public / Private Boundary
 
