@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="500" viewBox="0 0 1400 500" role="img" aria-labelledby="title desc">
+<title id="title">DPN Trust and Recovery Stack</title><desc id="desc">Layered security and recoverability model from identity through evidence and restoration.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#06070a"/><stop offset="1" stop-color="#10070a"/></linearGradient></defs>
+<rect width="1400" height="500" rx="24" fill="url(#bg)"/>
+<text x="70" y="58" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="800" fill="#ff5360" letter-spacing="4">TRUST + RECOVERY STACK</text>
+<text x="70" y="90" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="750" fill="#f4f4f6">Defense is stronger when restoration is part of the design.</text>
+
+<g transform="translate(140 126)">
+ <g><rect x="0" y="0" width="1120" height="54" rx="12" fill="#121318" stroke="#e50914" stroke-opacity=".38"/><text x="24" y="33" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="850" fill="#fff">1 • IDENTITY &amp; AUTHENTICATION</text><text x="785" y="33" font-family="Consolas,monospace" font-size="10" fill="#7d818a">USERS • SERVICES • DEVICES</text></g>
+ <g transform="translate(42 68)"><rect width="1036" height="54" rx="12" fill="#111217" stroke="#e50914" stroke-opacity=".31"/><text x="24" y="33" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="850" fill="#fff">2 • AUTHORIZATION &amp; POLICY</text><text x="700" y="33" font-family="Consolas,monospace" font-size="10" fill="#7d818a">LEAST PRIVILEGE • CLEARANCE • APPROVALS</text></g>
+ <g transform="translate(84 136)"><rect width="952" height="54" rx="12" fill="#101116" stroke="#e50914" stroke-opacity=".26"/><text x="24" y="33" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="850" fill="#fff">3 • AUDIT &amp; EVIDENCE</text><text x="630" y="33" font-family="Consolas,monospace" font-size="10" fill="#7d818a">EVENTS • LOGS • PROVENANCE</text></g>
+ <g transform="translate(126 204)"><rect width="868" height="54" rx="12" fill="#0f1015" stroke="#e50914" stroke-opacity=".23"/><text x="24" y="33" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="850" fill="#fff">4 • INTEGRITY &amp; SUPPLY CHAIN</text><text x="536" y="33" font-family="Consolas,monospace" font-size="10" fill="#7d818a">DEPENDENCIES • SIGNING • SBOM</text></g>
+ <g transform="translate(168 272)"><rect width="784" height="54" rx="12" fill="#0e0f14" stroke="#e50914" stroke-opacity=".21"/><text x="24" y="33" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="850" fill="#fff">5 • RECOVERY &amp; CONTINUITY</text><text x="465" y="33" font-family="Consolas,monospace" font-size="10" fill="#7d818a">BACKUP • ROLLBACK • RESTORE</text></g>
+</g>
+<text x="700" y="474" text-anchor="middle" font-family="Consolas,monospace" font-size="11" fill="#6e737c" letter-spacing="1.4">SECURITY IS NOT COMPLETE UNTIL FAILURE IS SURVIVABLE</text>
+<rect x="1" y="1" width="1398" height="498" rx="23" fill="none" stroke="#e50914" stroke-opacity=".16"/>
+</svg>
