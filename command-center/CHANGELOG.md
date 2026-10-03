@@ -26,6 +26,13 @@
 - Death the Developer uses the real Tk desktop studio and captures Editor, Neural Forge and Browser Studio without API keys or production workspace data.
 - ECS capture was hardened to generate the required COO boot secret and now authenticates to the runner-local CEO account for Command Center, Servers & Systems, Integrations and Clearance Matrix captures.
 - ECS authenticated screenshots are explicitly bounded to repository seed records and runner-local state, not production infrastructure or live telemetry.
+- Simulation and web capture wave added Tool & Die Simulator, DPN War Simulator, MemeSpace and DPN Website.
+- Standardized capture-factory coverage now spans 16 public product repositories.
+- War Simulator captures real Tk seamless-3D runtime scenes from an isolated profile.
+- MemeSpace captures the real local Next.js/SQLite runtime including the Neon Arcade and three v2.5 cabinets.
+- DPN Website captures the real DPN Web Core across company, leadership, product-world and public-status pages.
+- Tool & Die uses a manual self-hosted Windows/Unreal 5.8 factory rather than pretending the Unreal project can render on a stock GitHub runner.
+- Verification after this wave found all 16 factories installed and no standardized runtime manifest/PNG committed yet; execution proof remains pending manual workflow runs.
 
 ## v3.0 — Evidence Uplift
 
