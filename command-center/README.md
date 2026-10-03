@@ -258,3 +258,23 @@ The opening experience now includes:
 - responsive collapse to a practical grid on smaller displays.
 
 The visual upgrade does not weaken the existing public-evidence boundaries.
+
+
+## v3.7 product worlds
+
+v3.7 extends the visible presentation work by turning major DPN products into dedicated cinematic subsystems instead of presenting the ecosystem only as repository cards.
+
+Current Product Worlds:
+
+- DPN Operational Control;
+- DPN Aqua Labs;
+- Death the Developer;
+- DPN One;
+- DPN Service Desk;
+- DPN Network Mapper.
+
+Each world combines product-specific visual styling, a project interface, public GitHub metadata, visual-evidence counts, direct repository access and a public project dossier action.
+
+The world navigation rail tracks the currently visible subsystem, and the interface windows use local pointer depth/glow effects on capable devices.
+
+Evidence wording remains explicit. Service Desk and Network Mapper use existing actual project captures. Operational Control, Aqua Labs, Death the Developer and DPN One use source-verified interface views and are labeled accordingly rather than being presented as runtime screenshots.
