@@ -236,3 +236,25 @@ Run states are kept separate from proof states:
 - none of these states becomes runtime screenshot proof until a valid `docs/evidence/runtime/manifest.json` and referenced public images are committed.
 
 The run-history scan is cached briefly in the browser and fetched in small batches to reduce unauthenticated GitHub API pressure.
+
+
+## v3.6 visual overdrive
+
+v3.6 is a presentation-focused upgrade intended to make the Command Center look immediately different before a visitor reaches the deeper engineering sections.
+
+The new Visual Command Deck places six DPN product surfaces around an animated DPN System Core. Real project captures remain labeled as actual captures, while interfaces derived from current public source remain explicitly labeled source-verified rather than runtime.
+
+The opening experience now includes:
+
+- larger cinematic hero treatment and depth;
+- a third floating product interface in the hero;
+- live hero metrics;
+- a six-product command deck;
+- animated command-fabric connection lines;
+- pointer-driven 3D tilt and glow tracking;
+- a live recent-public-repository activity feed;
+- a DPN visual-language panel;
+- scroll progress and reveal motion;
+- responsive collapse to a practical grid on smaller displays.
+
+The visual upgrade does not weaken the existing public-evidence boundaries.
