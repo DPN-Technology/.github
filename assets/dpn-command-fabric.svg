@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="520" viewBox="0 0 1400 520" role="img" aria-labelledby="title desc">
+<title id="title">DPN Command Fabric</title><desc id="desc">A layered systems model connecting identity, observability, automation, recovery and applications.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#050609"/><stop offset=".55" stop-color="#0a0b10"/><stop offset="1" stop-color="#13070b"/></linearGradient>
+ <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#fff" stroke-opacity=".025"/></pattern>
+ <radialGradient id="core" cx=".5" cy=".5" r=".5"><stop stop-color="#e50914" stop-opacity=".28"/><stop offset="1" stop-color="#e50914" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1400" height="520" rx="24" fill="url(#bg)"/><rect width="1400" height="520" rx="24" fill="url(#grid)"/>
+<text x="68" y="58" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="800" fill="#ff5360" letter-spacing="4">DPN COMMAND FABRIC</text>
+<text x="68" y="90" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="750" fill="#f5f5f7">Systems stay useful when control, evidence and recovery are designed together.</text>
+
+<g transform="translate(70 132)">
+ <rect width="1260" height="74" rx="14" fill="#0d0f14" stroke="#e50914" stroke-opacity=".22"/>
+ <text x="28" y="30" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="850" fill="#fff">APPLICATION &amp; EXPERIENCE LAYER</text>
+ <text x="28" y="53" font-family="Consolas,monospace" font-size="10" fill="#777c86">BUSINESS SOFTWARE • AI SYSTEMS • INFRASTRUCTURE TOOLS • INTERACTIVE EXPERIENCES</text>
+</g>
+<g transform="translate(70 224)">
+ <rect width="295" height="160" rx="16" fill="#0d0f14" stroke="#e50914" stroke-opacity=".28"/>
+ <text x="24" y="34" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="850" fill="#fff">IDENTITY &amp; TRUST</text>
+ <text x="24" y="65" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#8f949e">Who or what may act?</text>
+ <text x="24" y="100" font-family="Consolas,monospace" font-size="10" fill="#ff6672">AUTHN • AUTHZ • MFA</text>
+ <text x="24" y="122" font-family="Consolas,monospace" font-size="10" fill="#777c86">DEVICE TRUST • POLICY</text>
+</g>
+<g transform="translate(387 224)">
+ <rect width="295" height="160" rx="16" fill="#0d0f14" stroke="#e50914" stroke-opacity=".23"/>
+ <text x="24" y="34" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="850" fill="#fff">OBSERVABILITY</text>
+ <text x="24" y="65" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#8f949e">What is happening now?</text>
+ <text x="24" y="100" font-family="Consolas,monospace" font-size="10" fill="#ff6672">HEALTH • EVENTS • AUDIT</text>
+ <text x="24" y="122" font-family="Consolas,monospace" font-size="10" fill="#777c86">TOPOLOGY • EVIDENCE</text>
+</g>
+<g transform="translate(704 224)">
+ <rect width="295" height="160" rx="16" fill="#0d0f14" stroke="#e50914" stroke-opacity=".23"/>
+ <text x="24" y="34" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="850" fill="#fff">AUTOMATION</text>
+ <text x="24" y="65" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#8f949e">What should happen next?</text>
+ <text x="24" y="100" font-family="Consolas,monospace" font-size="10" fill="#ff6672">WORKFLOWS • APPROVALS</text>
+ <text x="24" y="122" font-family="Consolas,monospace" font-size="10" fill="#777c86">POLICY • ORCHESTRATION</text>
+</g>
+<g transform="translate(1021 224)">
+ <rect width="309" height="160" rx="16" fill="#0d0f14" stroke="#e50914" stroke-opacity=".28"/>
+ <text x="24" y="34" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="850" fill="#fff">RECOVERY</text>
+ <text x="24" y="65" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#8f949e">How do we return safely?</text>
+ <text x="24" y="100" font-family="Consolas,monospace" font-size="10" fill="#ff6672">BACKUP • ROLLBACK</text>
+ <text x="24" y="122" font-family="Consolas,monospace" font-size="10" fill="#777c86">CHECKPOINTS • RESTORE</text>
+</g>
+
+<g stroke="#e50914" stroke-opacity=".22" stroke-width="2" fill="none">
+ <path d="M217 206v18M534 206v18M851 206v18M1175 206v18"/>
+ <path d="M217 384v42H700M534 384v42M851 384v42M1175 384v42H700"/>
+</g>
+<circle cx="700" cy="426" r="72" fill="url(#core)"/><circle cx="700" cy="426" r="44" fill="#12070a" stroke="#e50914" stroke-opacity=".48"/>
+<text x="700" y="421" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="900" fill="#fff">DPN</text>
+<text x="700" y="442" text-anchor="middle" font-family="Consolas,monospace" font-size="8" font-weight="800" fill="#ff6672" letter-spacing="2">CONTROL PLANE</text>
+<text x="68" y="479" font-family="Consolas,monospace" font-size="10" fill="#6e737d" letter-spacing="1.5">CONTROL WITHOUT EVIDENCE IS GUESSWORK • AUTOMATION WITHOUT RECOVERY IS RISK</text>
+<rect x="1" y="1" width="1398" height="518" rx="23" fill="none" stroke="#e50914" stroke-opacity=".16"/>
+</svg>
