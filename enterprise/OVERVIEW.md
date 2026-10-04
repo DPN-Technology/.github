@@ -29,6 +29,7 @@ Its job is to make engineering policy consistent across the DPN ecosystem while 
 
 | Control | State | Direction |
 | --- | --- | --- |
+| Enterprise Overview README | **CANONICAL READY** | Publish this reviewed file from the Enterprise Overview editor |
 | Enterprise source of truth | **ESTABLISHED** | Versioned in the public DPN `.github` control plane |
 | Repository classification | **20 / 20 BASELINED** | Maintain through Enterprise custom properties |
 | Enterprise Green Gate | **OPERATIONAL** | Audit first, enforce after remediation |
