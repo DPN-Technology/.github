@@ -51,6 +51,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          test -s enterprise/OVERVIEW.md
           test -s enterprise/policy.yml
           test -s enterprise/repositories.yml
           test -s enterprise/RULESETS.md
@@ -64,8 +65,22 @@ jobs:
           from pathlib import Path
           import re
 
+          overview = Path("enterprise/OVERVIEW.md").read_text(encoding="utf-8")
           policy = Path("enterprise/policy.yml").read_text(encoding="utf-8")
           repos = Path("enterprise/repositories.yml").read_text(encoding="utf-8")
+
+          for required_text in [
+              "DPN Enterprise // Control Plane",
+              "DPN Governance Estate",
+              "Ruleset Stack",
+              "Enterprise Quick Access",
+              "Rollout State",
+          ]:
+              if required_text not in overview:
+                  raise SystemExit(f"Enterprise Overview missing required section: {required_text}")
+
+          if "raw.githubusercontent.com/DPN-Technology/.github/main/assets/" not in overview:
+              raise SystemExit("Enterprise Overview must use publicly hosted DPN visual assets")
 
           required_props = {
               "dpn_product", "lifecycle", "governance_tier", "criticality",
