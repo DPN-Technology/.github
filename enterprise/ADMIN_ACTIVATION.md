@@ -1,5 +1,14 @@
 # DPN Enterprise Admin Activation
 
+## Priority -1 — Enterprise Overview
+- open the DPN Enterprise **Overview** page;
+- choose **Create README** or **Edit**;
+- copy the reviewed content from `enterprise/OVERVIEW.md`;
+- save the Enterprise README;
+- verify the hero/diagram images load from the public DPN `.github` repository;
+- repeat this step whenever the canonical overview materially changes.
+
+
 These controls are defined in source but require an Enterprise Owner to activate them in GitHub's Enterprise settings because the connected GitHub automation does not expose Enterprise administration APIs.
 
 ## Priority 0 — Identity and authority
