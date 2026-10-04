@@ -18,6 +18,8 @@ The Enterprise account is treated as a governance layer above the organization, 
 | File | Purpose |
 | --- | --- |
 | [OVERVIEW.md](OVERVIEW.md) | Canonical content for the GitHub Enterprise Overview README |
+| [Enterprise Overview](ENTERPRISE_OVERVIEW.md) | Finished member-facing GitHub Enterprise Overview README |
+| [Publish Enterprise Overview](PUBLISH_ENTERPRISE_OVERVIEW.md) | Enterprise Owner publishing procedure |
 | [policy.yml](policy.yml) | Machine-readable Enterprise defaults and governance tiers |
 | [repositories.yml](repositories.yml) | Initial DPN repository classification |
 | [CUSTOM_PROPERTIES.md](CUSTOM_PROPERTIES.md) | GitHub Enterprise custom-property schema |
