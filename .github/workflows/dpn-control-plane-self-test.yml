@@ -62,6 +62,34 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Validate private-key detector semantics
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import re
+
+          detector = re.compile(
+              rb"(?m)^[ \\t]*-----BEGIN (?:RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----[ \\t]*\\r?$"
+          )
+
+          real_pem = (
+              b"-----BEGIN PRIVATE KEY-----\\n"
+              b"ZmFrZS1maXh0dXJlLWJ1dC1wZW0tbGluZS1zaGFwZQ==\\n"
+              b"-----END PRIVATE KEY-----\\n"
+          )
+          source_literal = (
+              b'_PRIVATE_KEY_MARKER = "-----BEGIN PRIVATE KEY-----"\\n'
+              b'test_value = "-----BEGIN RSA PRIVATE KEY-----\\nabc\\n-----END RSA PRIVATE KEY-----"\\n'
+          )
+
+          if not detector.search(real_pem):
+              raise SystemExit("Private-key detector regression: real PEM header not detected")
+          if detector.search(source_literal):
+              raise SystemExit("Private-key detector regression: quoted source fixture falsely detected")
+          print("Private-key detector semantics validated.")
+          PY
+
       - name: Validate Enterprise source of truth
         shell: bash
         run: |
