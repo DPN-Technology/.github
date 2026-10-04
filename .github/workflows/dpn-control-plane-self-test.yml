@@ -97,10 +97,44 @@ jobs:
               raise SystemExit(f"Expected at least 20 classified repositories, found {len(repo_names)}")
 
           valid_tiers = {"critical", "elevated", "standard", "experimental"}
-          tiers = re.findall(r"^\s+governance_tier:\s*([^\n]+)\s*$", repos, re.M)
-          invalid = sorted({x.strip() for x in tiers if x.strip() not in valid_tiers})
+          tiers = [x.strip() for x in re.findall(r"^\s+governance_tier:\s*([^\n]+)\s*$", repos, re.M)]
+          invalid = sorted({x for x in tiers if x not in valid_tiers})
           if invalid:
               raise SystemExit(f"Invalid governance tiers: {invalid}")
 
-          print(f"Validated {len(repo_names)} repository classifications.")
+          clearances = [x.strip() for x in re.findall(r"^\s+clearance:\s*([^\n]+)\s*$", repos, re.M)]
+          expected_counts = {
+              "governed": len(repo_names),
+              "critical": tiers.count("critical"),
+              "elevated": tiers.count("elevated"),
+              "standard": tiers.count("standard"),
+              "experimental": tiers.count("experimental"),
+              "L4-PURPLE": clearances.count("L4-PURPLE"),
+              "L3-RED": clearances.count("L3-RED"),
+              "L2-YELLOW": clearances.count("L2-YELLOW"),
+              "L1-GREEN": clearances.count("L1-GREEN"),
+          }
+
+          required_overview_facts = [
+              f"GOVERNED%20REPOSITORIES-{expected_counts['governed']}",
+              f"**Critical** | {expected_counts['critical']}",
+              f"**Elevated** | {expected_counts['elevated']}",
+              f"**Standard** | {expected_counts['standard']}",
+              f"**Experimental** | {expected_counts['experimental']}",
+              f"**L4 PURPLE** | {expected_counts['L4-PURPLE']}",
+              f"**L3 RED** | {expected_counts['L3-RED']}",
+              f"**L2 YELLOW** | {expected_counts['L2-YELLOW']}",
+              f"**L1 GREEN** | {expected_counts['L1-GREEN']}",
+          ]
+          stale = [fact for fact in required_overview_facts if fact not in overview]
+          if stale:
+              raise SystemExit(
+                  "Enterprise Overview is stale relative to repository classification: "
+                  + "; ".join(stale)
+              )
+
+          print(
+              "Validated Enterprise Overview against "
+              f"{len(repo_names)} repository classifications: {expected_counts}"
+          )
           PY
