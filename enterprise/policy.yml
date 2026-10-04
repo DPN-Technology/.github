@@ -5,6 +5,14 @@ enterprise:
   governance_model: centralized
   default_mode: audit
   target_mode: enforce
+  governance_sources:
+    public_policy: DPN-Technology/.github
+    internal_inventory: private-operational-inventory
+  required_workflows:
+    baseline: .github/workflows/dpn-enterprise-ruleset.yml
+    elevated: .github/workflows/dpn-enterprise-elevated-ruleset.yml
+    critical: .github/workflows/dpn-enterprise-critical-ruleset.yml
+    public_surface: .github/workflows/dpn-enterprise-public-ruleset.yml
 
 defaults:
   repository_visibility:
