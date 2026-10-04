@@ -59,7 +59,7 @@ This repository powers the public DPN Technology GitHub profile and defines reus
 
 | Path | Purpose |
 | --- | --- |
-| [Pull request template](.github/PULL_REQUEST_TEMPLATE.md) | Problem/scope/evidence/security/rollback review |
+| [Pull request template](.github/pull_request_template.md) | Problem/scope/evidence/security/rollback review |
 | [Bug report form](.github/ISSUE_TEMPLATE/bug_report.yml) | Structured public bug intake |
 | [Feature request form](.github/ISSUE_TEMPLATE/feature_request.yml) | Problem-first enhancement requests |
 | [Issue configuration](.github/ISSUE_TEMPLATE/config.yml) | Security-routing and blank-issue policy |
@@ -123,3 +123,33 @@ flowchart LR
 ```
 
 Product repositories remain responsible for truthful product-specific tests and runtime verification. Central automation standardizes evidence; it does not replace engineering judgment.
+
+
+## GitHub Enterprise Control Plane
+
+The Enterprise layer turns the DPN standards above into a centrally managed enforcement system.
+
+| Enterprise control | Purpose |
+| --- | --- |
+| [Enterprise Security Baseline](ENTERPRISE_SECURITY_BASELINE.md) | Organization-wide branch, Actions, security and release target |
+| [Enterprise Rollout](ENTERPRISE_ROLLOUT.md) | Audit → remediation → enforce deployment model |
+| [Enterprise Ruleset Blueprint](templates/ENTERPRISE_RULESET_BLUEPRINT.md) | Organization branch/push ruleset configuration |
+| [Enterprise Green Gate](.github/workflows/dpn-green-gate.yml) | Audit/enforce policy engine for repository evidence and workflow security |
+| [Enterprise Security](.github/workflows/dpn-enterprise-security.yml) | Reusable dependency review and OpenSSF security workflow |
+| [Artifact Provenance](.github/workflows/dpn-enterprise-artifact-attest.yml) | SHA-256 evidence and GitHub build provenance attestations |
+| [Enterprise workflow template](.github/workflow-templates/dpn-enterprise-security.yml) | Starter caller for new repositories |
+| [Control-plane CODEOWNERS](.github/CODEOWNERS) | Ownership of organization-wide policy and reusable workflows |
+
+### Enterprise operating model
+
+```mermaid
+flowchart LR
+  O[Organization Rulesets] --> G[DPN Enterprise Green Gate]
+  G --> C[Repository CI]
+  C --> S[Security + Supply Chain]
+  S --> A[Artifact Attestation]
+  A --> E[Release Evidence]
+  E --> O
+```
+
+Repositories begin in **audit** mode so findings are visible without freezing development. After remediation, switch the gate to **enforce** and require it through the organization ruleset.
