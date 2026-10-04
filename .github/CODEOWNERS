@@ -1,0 +1,11 @@
+# DPN Technology shared GitHub control plane
+* @DevelopPioneerNavigate
+
+# Changes here affect organization-wide reusable workflows and policy.
+/.github/workflows/ @DevelopPioneerNavigate
+/.github/workflow-templates/ @DevelopPioneerNavigate
+/ENTERPRISE_SECURITY_BASELINE.md @DevelopPioneerNavigate
+/ENTERPRISE_ROLLOUT.md @DevelopPioneerNavigate
+/GOVERNANCE.md @DevelopPioneerNavigate
+/QUALITY_GATES.md @DevelopPioneerNavigate
+/SUPPLY_CHAIN_SECURITY.md @DevelopPioneerNavigate
