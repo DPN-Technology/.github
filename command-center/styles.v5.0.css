@@ -2976,7 +2976,7 @@ html.guided-demo-open{overflow:hidden}
   --proof:0;width:102px;height:102px;border-radius:50%;display:grid;place-content:center;text-align:center;
   background:
     radial-gradient(circle,#07070a 57%,transparent 59%),
-    conic-gradient(#ff3348 calc(var(--proof) * 1%),rgba(255,255,255,.055) 0);
+    conic-gradient(#ff3348 var(--proof),rgba(255,255,255,.055) 0);
   box-shadow:0 0 28px rgba(229,9,20,.08)
 }
 .nexus-proof-ring strong,.nexus-proof-ring small{display:block}
