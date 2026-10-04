@@ -1,0 +1,94 @@
+name: DPN Reusable Artifact Attestation
+
+on:
+  workflow_call:
+    inputs:
+      artifact_name:
+        description: Name of an artifact uploaded earlier in the same workflow run.
+        required: true
+        type: string
+      download_path:
+        description: Directory to download the artifact into.
+        required: false
+        type: string
+        default: dist
+      subject_path:
+        description: Glob of files to attest after download.
+        required: false
+        type: string
+        default: dist/**
+      evidence_artifact_name:
+        description: Name for the checksum/evidence artifact.
+        required: false
+        type: string
+        default: dpn-release-evidence
+
+permissions:
+  contents: read
+  id-token: write
+  attestations: write
+  actions: read
+
+jobs:
+  attest:
+    name: DPN Artifact Provenance
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: ${{ inputs.download_path }}
+
+      - name: Inventory artifact
+        shell: bash
+        env:
+          DPN_PATH: ${{ inputs.download_path }}
+        run: |
+          set -euo pipefail
+          test -d "$DPN_PATH"
+          find "$DPN_PATH" -type f -print | sort
+          if ! find "$DPN_PATH" -type f -print -quit | grep -q .; then
+            echo "::error::No files were found in the downloaded artifact."
+            exit 1
+          fi
+
+      - name: Generate SHA-256 evidence
+        shell: bash
+        env:
+          DPN_PATH: ${{ inputs.download_path }}
+        run: |
+          set -euo pipefail
+          (
+            cd "$DPN_PATH"
+            find . -type f ! -name 'SHA256SUMS.txt' -print0 |
+              sort -z |
+              xargs -0 sha256sum
+          ) > "$DPN_PATH/SHA256SUMS.txt"
+
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        with:
+          subject-path: ${{ inputs.subject_path }}
+
+      - name: Upload release evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: ${{ inputs.evidence_artifact_name }}
+          path: |
+            ${{ inputs.download_path }}/SHA256SUMS.txt
+          if-no-files-found: error
+
+      - name: Provenance summary
+        shell: bash
+        run: |
+          {
+            echo "# DPN Artifact Provenance"
+            echo
+            echo "- Repository: \`${GITHUB_REPOSITORY}\`"
+            echo "- Commit: \`${GITHUB_SHA}\`"
+            echo "- Artifact: \`${{ inputs.artifact_name }}\`"
+            echo "- Subject path: \`${{ inputs.subject_path }}\`"
+            echo "- Evidence: SHA-256 checksums + GitHub artifact attestation"
+          } >> "$GITHUB_STEP_SUMMARY"
