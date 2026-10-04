@@ -242,8 +242,10 @@ jobs:
               except OSError:
                   pass
 
+          # Match a real PEM private-key header line, not source code or tests
+          # that merely contain the marker as a quoted detection fixture.
           private_key_re = re.compile(
-              rb"-----BEGIN (?:RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----"
+              rb"(?m)^[ \\t]*-----BEGIN (?:RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----[ \\t]*\\r?$"
           )
           for item in tracked:
               p = Path(item)
