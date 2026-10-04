@@ -72,3 +72,15 @@ Do not publish private repository lists, customer or employee information, inter
 ## Integration direction
 
 Future GitHub-to-DPN integration should follow an authenticated event contract between GitHub and DPN Operational Control, WatchTower, or Service Desk. Every integration must define authentication, authorization, replay handling, audit evidence, failure behavior and secret rotation.
+
+
+## Deployment patterns
+
+DPN supports two Green Gate deployment patterns:
+
+- **Central reusable gate** — preferred where repository Actions policy allows organization-hosted reusable workflows.
+- **Self-contained gate** — permitted where repository visibility, Actions policy, or runner constraints prevent central workflow execution.
+
+Both patterns should preserve the same evidence contract and use read-only permissions unless a specific capability requires more.
+
+A failed workflow that never receives a runner is an infrastructure or policy failure, not evidence that product code failed. Green Gate reporting should distinguish execution failures from repository-evidence failures.
