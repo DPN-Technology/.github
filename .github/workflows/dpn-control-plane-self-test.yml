@@ -70,13 +70,13 @@ jobs:
           import re
 
           detector = re.compile(
-              rb"(?m)^[ \\t]*-----BEGIN (?:RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----[ \\t]*\\r?$"
+              rb"(?m)^[ \t]*-----BEGIN (?:RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----[ \t]*\r?$"
           )
 
           real_pem = (
-              b"-----BEGIN PRIVATE KEY-----\\n"
-              b"ZmFrZS1maXh0dXJlLWJ1dC1wZW0tbGluZS1zaGFwZQ==\\n"
-              b"-----END PRIVATE KEY-----\\n"
+              b"-----BEGIN PRIVATE KEY-----\n"
+              b"ZmFrZS1maXh0dXJlLWJ1dC1wZW0tbGluZS1zaGFwZQ==\n"
+              b"-----END PRIVATE KEY-----\n"
           )
           source_literal = (
               b'_PRIVATE_KEY_MARKER = "-----BEGIN PRIVATE KEY-----"\\n'
