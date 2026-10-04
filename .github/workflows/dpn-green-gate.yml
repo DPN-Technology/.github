@@ -13,6 +13,11 @@ on:
         required: false
         type: string
         default: audit
+      governance_tier:
+        description: Governance tier override. Use auto to resolve the Enterprise custom property when available.
+        required: false
+        type: string
+        default: auto
       require_security_policy:
         description: Require SECURITY.md.
         required: false
@@ -69,11 +74,48 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
+      - name: Resolve Enterprise governance tier
+        id: governance
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REQUESTED_TIER: ${{ inputs.governance_tier }}
+        run: |
+          set -euo pipefail
+          requested="${REQUESTED_TIER,,}"
+          tier="$requested"
+          source="input"
+
+          if [[ "$requested" == "auto" || -z "$requested" ]]; then
+            source="enterprise-custom-property"
+            tier="$(gh api "repos/${GITHUB_REPOSITORY}/properties/values" --jq '.[] | select(.property_name == "governance_tier") | .value' 2>/dev/null | head -n1 || true)"
+            tier="${tier,,}"
+            if [[ -z "$tier" ]]; then
+              tier="standard"
+              source="fallback-standard"
+              echo "::notice title=DPN Enterprise Governance::governance_tier custom property is not set yet; using standard audit posture."
+            fi
+          fi
+
+          case "$tier" in
+            critical|elevated|standard|experimental) ;;
+            *)
+              echo "::warning title=DPN Enterprise Governance::Unknown governance tier '$tier'; falling back to standard."
+              tier="standard"
+              source="fallback-standard"
+              ;;
+          esac
+
+          echo "tier=$tier" >> "$GITHUB_OUTPUT"
+          echo "source=$source" >> "$GITHUB_OUTPUT"
+
       - name: Evaluate repository evidence and Enterprise policy
         shell: bash
         env:
           DPN_LIFECYCLE: ${{ inputs.lifecycle }}
           DPN_ENTERPRISE_MODE: ${{ inputs.enterprise_mode }}
+          DPN_GOVERNANCE_TIER: ${{ steps.governance.outputs.tier }}
+          DPN_GOVERNANCE_SOURCE: ${{ steps.governance.outputs.source }}
           REQUIRE_SECURITY: ${{ inputs.require_security_policy }}
           REQUIRE_DEPENDENCY: ${{ inputs.require_dependency_record }}
           REQUIRE_RUNBOOK: ${{ inputs.require_runbook }}
@@ -104,6 +146,12 @@ jobs:
           require_permissions = os.environ.get("REQUIRE_WORKFLOW_PERMISSIONS", "false").lower() == "true"
           max_file_mb = float(os.environ.get("MAX_TRACKED_FILE_MB", "50"))
           lifecycle = os.environ.get("DPN_LIFECYCLE", "development")
+          governance_tier = os.environ.get("DPN_GOVERNANCE_TIER", "standard").strip().lower()
+          governance_source = os.environ.get("DPN_GOVERNANCE_SOURCE", "unknown").strip()
+
+          if governance_tier not in {"critical", "elevated", "standard", "experimental"}:
+              governance_tier = "standard"
+              governance_source = "fallback-standard"
 
           failures = []
           violations = []
@@ -125,6 +173,15 @@ jobs:
               safe = str(message).replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
               print(f"::{level} title=DPN Enterprise Gate::{safe}")
 
+          def tier_expect(label, paths):
+              if any_exists(paths):
+                  passes.append(f"{label} [{governance_tier}]")
+              else:
+                  violations.append(
+                      f"{label}: required by governance tier {governance_tier} "
+                      f"({', '.join(paths)})"
+                  )
+
           check("README", ["README.md", "README.rst", "README.txt"], required=True)
           check("Contribution guidance", ["CONTRIBUTING.md", ".github/CONTRIBUTING.md"])
           check("Support guidance", ["SUPPORT.md", ".github/SUPPORT.md"])
@@ -144,6 +201,24 @@ jobs:
                   "Pull request template",
                   [".github/pull_request_template.md", ".github/PULL_REQUEST_TEMPLATE.md", "pull_request_template.md"],
                   required=True,
+              )
+
+          # Enterprise tier expectations are audit findings in audit mode and
+          # become blocking policy violations when enterprise_mode=enforce.
+          if governance_tier in {"critical", "elevated"}:
+              tier_expect("CODEOWNERS", ["CODEOWNERS", ".github/CODEOWNERS", "docs/CODEOWNERS"])
+              tier_expect(
+                  "Pull request template",
+                  [".github/pull_request_template.md", ".github/PULL_REQUEST_TEMPLATE.md", "pull_request_template.md"],
+              )
+              tier_expect(
+                  "Third-party dependency/license record",
+                  ["THIRD_PARTY_LICENSES.md", "THIRD_PARTY_NOTICES.md", "SBOM.spdx.json", "SBOM.cdx.json"],
+              )
+          elif governance_tier == "standard":
+              tier_expect(
+                  "Pull request template",
+                  [".github/pull_request_template.md", ".github/PULL_REQUEST_TEMPLATE.md", "pull_request_template.md"],
               )
 
           tracked = subprocess.check_output(["git", "ls-files"], text=True).splitlines()
@@ -236,6 +311,8 @@ jobs:
               fh.write(f"- Repository: `{os.environ.get('GITHUB_REPOSITORY','')}`\n")
               fh.write(f"- Commit: `{os.environ.get('GITHUB_SHA','')}`\n")
               fh.write(f"- Lifecycle: `{lifecycle}`\n")
+              fh.write(f"- Governance tier: `{governance_tier.upper()}`\n")
+              fh.write(f"- Governance source: `{governance_source}`\n")
               fh.write(f"- Enterprise mode: `{mode.upper()}`\n")
               fh.write(f"- Required failures: `{len(failures)}`\n")
               fh.write(f"- Enterprise violations: `{len(violations)}`\n")
@@ -266,7 +343,11 @@ jobs:
                   status = "GREEN — baseline and Enterprise policy checks passed"
               fh.write(f"## Status: {status}\n")
 
-          print(f"DPN Green Gate: failures={len(failures)} violations={len(violations)} warnings={len(warnings)} mode={mode}")
+          print(
+              f"DPN Green Gate: tier={governance_tier} source={governance_source} "
+              f"failures={len(failures)} violations={len(violations)} "
+              f"warnings={len(warnings)} mode={mode}"
+          )
 
           if failures:
               raise SystemExit(1)

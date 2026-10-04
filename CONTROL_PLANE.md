@@ -84,3 +84,32 @@ DPN supports two Green Gate deployment patterns:
 Both patterns should preserve the same evidence contract and use read-only permissions unless a specific capability requires more.
 
 A failed workflow that never receives a runner is an infrastructure or policy failure, not evidence that product code failed. Green Gate reporting should distinguish execution failures from repository-evidence failures.
+
+
+## Enterprise layer
+
+The DPN GitHub control plane now has an explicit Enterprise layer above the organization.
+
+The source-controlled Enterprise design lives in [enterprise/README.md](enterprise/README.md) and includes:
+
+- machine-readable Enterprise policy;
+- governance-tier classification for the DPN repository estate;
+- enterprise custom-property definitions;
+- property-targeted ruleset architecture;
+- GitHub Actions execution and supply-chain policy;
+- identity/access and programmatic-token posture;
+- security configuration rollout;
+- an activation checklist for settings that require an Enterprise Owner.
+
+### Layering
+
+```text
+DPN Enterprise
+  -> enterprise policies / properties / rulesets
+    -> DPN-Technology organization
+      -> shared .github control plane
+        -> repository Green Gate + product CI + security
+          -> release provenance and operational evidence
+```
+
+The Enterprise layer owns the minimum floor. Organization and repository controls may become more restrictive but should not silently weaken Enterprise policy.
