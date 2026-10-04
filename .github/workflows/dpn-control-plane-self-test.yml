@@ -9,6 +9,7 @@ on:
       - "CONTROL_PLANE.md"
       - "GREEN_GATE_STANDARD.md"
       - "REPOSITORY_METADATA_STANDARD.md"
+      - "enterprise/**"
       - "templates/**"
       - "README.md"
   workflow_dispatch:
@@ -21,12 +22,70 @@ jobs:
     uses: ./.github/workflows/dpn-green-gate.yml
     with:
       lifecycle: release
+      enterprise_mode: audit
       require_security_policy: true
       require_dependency_record: false
       require_runbook: false
+      require_codeowners: true
+      require_pr_template: true
+      require_action_sha_pinning: true
+      require_explicit_workflow_permissions: true
 
   reusable-ci-contract:
     uses: ./.github/workflows/dpn-reusable-ci.yml
     with:
       working_directory: .
       timeout_minutes: 10
+
+  enterprise-policy-contract:
+    name: Enterprise Policy Contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Validate Enterprise source of truth
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s enterprise/policy.yml
+          test -s enterprise/repositories.yml
+          test -s enterprise/RULESETS.md
+          test -s enterprise/ACTIONS_POLICY.md
+          test -s enterprise/ACCESS_MODEL.md
+          test -s enterprise/CUSTOM_PROPERTIES.md
+          test -s enterprise/SECURITY_ROLLOUT.md
+          test -s enterprise/ADMIN_ACTIVATION.md
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          policy = Path("enterprise/policy.yml").read_text(encoding="utf-8")
+          repos = Path("enterprise/repositories.yml").read_text(encoding="utf-8")
+
+          required_props = {
+              "dpn_product", "lifecycle", "governance_tier", "criticality",
+              "clearance", "component", "customer_facing",
+              "release_channel", "security_tier"
+          }
+          found = set(re.findall(r"^\s*- name:\s*([A-Za-z0-9_$#-]+)\s*$", policy, re.M))
+          missing = sorted(required_props - found)
+          if missing:
+              raise SystemExit(f"Missing Enterprise property definitions: {missing}")
+
+          repo_names = re.findall(r"^\s*- name:\s*([^\n]+)\s*$", repos, re.M)
+          if len(repo_names) < 20:
+              raise SystemExit(f"Expected at least 20 classified repositories, found {len(repo_names)}")
+
+          valid_tiers = {"critical", "elevated", "standard", "experimental"}
+          tiers = re.findall(r"^\s+governance_tier:\s*([^\n]+)\s*$", repos, re.M)
+          invalid = sorted({x.strip() for x in tiers if x.strip() not in valid_tiers})
+          if invalid:
+              raise SystemExit(f"Invalid governance tiers: {invalid}")
+
+          print(f"Validated {len(repo_names)} repository classifications.")
+          PY
