@@ -1,0 +1,126 @@
+name: DPN Reusable Green Gate
+
+on:
+  workflow_call:
+    inputs:
+      lifecycle:
+        description: Declared repository lifecycle.
+        required: false
+        type: string
+        default: development
+      require_security_policy:
+        description: Require SECURITY.md.
+        required: false
+        type: boolean
+        default: true
+      require_dependency_record:
+        description: Require a third-party dependency/license record.
+        required: false
+        type: boolean
+        default: false
+      require_runbook:
+        description: Require an operational runbook.
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  green-gate:
+    name: DPN Green Gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout caller repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+
+      - name: Evaluate repository evidence
+        shell: bash
+        env:
+          DPN_LIFECYCLE: ${{ inputs.lifecycle }}
+          REQUIRE_SECURITY: ${{ inputs.require_security_policy }}
+          REQUIRE_DEPENDENCY: ${{ inputs.require_dependency_record }}
+          REQUIRE_RUNBOOK: ${{ inputs.require_runbook }}
+        run: |
+          set -euo pipefail
+          failures=0
+          warnings=0
+
+          check_required() {
+            local label="$1"
+            shift
+            local found=0
+            for path in "$@"; do
+              if [[ -e "$path" ]]; then
+                found=1
+                break
+              fi
+            done
+            if [[ "$found" -eq 1 ]]; then
+              echo "PASS: $label"
+            else
+              echo "FAIL: $label"
+              failures=$((failures + 1))
+            fi
+          }
+
+          check_optional() {
+            local label="$1"
+            shift
+            local found=0
+            for path in "$@"; do
+              if [[ -e "$path" ]]; then
+                found=1
+                break
+              fi
+            done
+            if [[ "$found" -eq 1 ]]; then
+              echo "PASS: $label"
+            else
+              echo "WARN: $label"
+              warnings=$((warnings + 1))
+            fi
+          }
+
+          check_required "README" README.md README.rst README.txt
+          check_optional "Contribution guidance" CONTRIBUTING.md .github/CONTRIBUTING.md
+          check_optional "Support guidance" SUPPORT.md .github/SUPPORT.md
+          check_optional "License/notice" LICENSE LICENSE.md NOTICE NOTICE.md
+
+          if [[ "$REQUIRE_SECURITY" == "true" ]]; then
+            check_required "Security policy" SECURITY.md .github/SECURITY.md
+          else
+            check_optional "Security policy" SECURITY.md .github/SECURITY.md
+          fi
+
+          if [[ "$REQUIRE_DEPENDENCY" == "true" ]]; then
+            check_required "Third-party dependency/license record" THIRD_PARTY_LICENSES.md THIRD_PARTY_NOTICES.md SBOM.spdx.json SBOM.cdx.json
+          else
+            check_optional "Third-party dependency/license record" THIRD_PARTY_LICENSES.md THIRD_PARTY_NOTICES.md SBOM.spdx.json SBOM.cdx.json
+          fi
+
+          if [[ "$REQUIRE_RUNBOOK" == "true" ]]; then
+            check_required "Operational runbook" RUNBOOK.md docs/RUNBOOK.md docs/runbook.md
+          fi
+
+          {
+            echo "# DPN Green Gate"
+            echo
+            echo "- Repository: \`${GITHUB_REPOSITORY}\`"
+            echo "- Commit: \`${GITHUB_SHA}\`"
+            echo "- Lifecycle: \`${DPN_LIFECYCLE}\`"
+            echo "- Required failures: \`${failures}\`"
+            echo "- Advisory warnings: \`${warnings}\`"
+            echo
+            if [[ "$failures" -eq 0 ]]; then
+              echo "## Status: GREEN"
+            else
+              echo "## Status: RED"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [[ "$failures" -ne 0 ]]; then
+            exit 1
+          fi

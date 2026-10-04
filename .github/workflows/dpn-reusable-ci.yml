@@ -1,0 +1,96 @@
+name: DPN Reusable CI
+
+on:
+  workflow_call:
+    inputs:
+      working_directory:
+        description: Directory containing the project.
+        required: false
+        type: string
+        default: .
+      install_command:
+        description: Repository-defined dependency or install command.
+        required: false
+        type: string
+        default: ""
+      lint_command:
+        description: Repository-defined lint or static-analysis command.
+        required: false
+        type: string
+        default: ""
+      test_command:
+        description: Repository-defined test command.
+        required: false
+        type: string
+        default: ""
+      build_command:
+        description: Repository-defined build command.
+        required: false
+        type: string
+        default: ""
+      timeout_minutes:
+        description: Maximum job duration.
+        required: false
+        type: number
+        default: 30
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    name: DPN CI
+    runs-on: ubuntu-latest
+    timeout-minutes: ${{ inputs.timeout_minutes }}
+    defaults:
+      run:
+        working-directory: ${{ inputs.working_directory }}
+        shell: bash
+    steps:
+      - name: Checkout caller repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+
+      - name: Install
+        if: ${{ inputs.install_command != '' }}
+        env:
+          DPN_COMMAND: ${{ inputs.install_command }}
+        run: |
+          set -euo pipefail
+          bash -lc "$DPN_COMMAND"
+
+      - name: Lint or static analysis
+        if: ${{ inputs.lint_command != '' }}
+        env:
+          DPN_COMMAND: ${{ inputs.lint_command }}
+        run: |
+          set -euo pipefail
+          bash -lc "$DPN_COMMAND"
+
+      - name: Test
+        if: ${{ inputs.test_command != '' }}
+        env:
+          DPN_COMMAND: ${{ inputs.test_command }}
+        run: |
+          set -euo pipefail
+          bash -lc "$DPN_COMMAND"
+
+      - name: Build
+        if: ${{ inputs.build_command != '' }}
+        env:
+          DPN_COMMAND: ${{ inputs.build_command }}
+        run: |
+          set -euo pipefail
+          bash -lc "$DPN_COMMAND"
+
+      - name: Evidence summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "# DPN CI Evidence"
+            echo
+            echo "- Repository: \`${GITHUB_REPOSITORY}\`"
+            echo "- Commit: \`${GITHUB_SHA}\`"
+            echo "- Run: \`${GITHUB_RUN_ID}\`"
+            echo "- Working directory: \`${{ inputs.working_directory }}\`"
+          } >> "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,12 @@
+# DPN CODEOWNERS template
+#
+# Replace placeholders with valid GitHub users or organization teams before
+# copying this file to .github/CODEOWNERS in a product repository.
+#
+# *                 @DPN-Technology/<maintainer-team>
+# /.github/          @DPN-Technology/<platform-team>
+# /security/         @DPN-Technology/<security-team>
+# /infrastructure/   @DPN-Technology/<infrastructure-team>
+# /docs/             @DPN-Technology/<documentation-team>
+#
+# Critical paths should have the narrowest practical ownership.

@@ -1,0 +1,6 @@
+{
+  "name": "DPN Green Gate",
+  "description": "Apply the DPN repository evidence and governance baseline to pull requests.",
+  "iconName": "octicon-shield-check",
+  "categories": ["Continuous integration", "Security"]
+}

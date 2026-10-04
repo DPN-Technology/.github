@@ -1,0 +1,15 @@
+# DPN repository metadata template
+# This file can be mirrored into GitHub custom properties.
+
+dpn:
+  product: ""
+  lifecycle: development
+  criticality: tier-3
+  clearance: L1-GREEN
+  component: application
+  customer_facing: false
+  release_channel: dev
+  security_tier: baseline
+  owner: ""
+  support_path: ""
+  security_path: "SECURITY.md"

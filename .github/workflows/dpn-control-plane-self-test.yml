@@ -1,0 +1,32 @@
+name: DPN Control Plane Self-Test
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/**"
+      - ".github/workflow-templates/**"
+      - ".github/VULNERABILITY_REPORT.yml"
+      - "CONTROL_PLANE.md"
+      - "GREEN_GATE_STANDARD.md"
+      - "REPOSITORY_METADATA_STANDARD.md"
+      - "templates/**"
+      - "README.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  green-gate-contract:
+    uses: ./.github/workflows/dpn-green-gate.yml
+    with:
+      lifecycle: release
+      require_security_policy: true
+      require_dependency_record: false
+      require_runbook: false
+
+  reusable-ci-contract:
+    uses: ./.github/workflows/dpn-reusable-ci.yml
+    with:
+      working_directory: .
+      timeout_minutes: 10

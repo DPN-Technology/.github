@@ -94,3 +94,32 @@ The goal is not maximum ceremony. The goal is **repeatable engineering decisions
 ## Security
 
 For vulnerabilities, follow [SECURITY.md](SECURITY.md). Do not disclose exploitable issues in a public issue.
+
+
+## GitHub Control Plane v3
+
+The organization control-plane layer adds machine-readable repository standards and reusable automation on top of the existing DPN engineering standards.
+
+| Resource | Purpose |
+| --- | --- |
+| [Control Plane v3](CONTROL_PLANE.md) | Organization-wide policy, automation, evidence and integration model |
+| [Repository Metadata Standard](REPOSITORY_METADATA_STANDARD.md) | Consistent lifecycle, criticality, clearance and product metadata |
+| [Green Gate Standard](GREEN_GATE_STANDARD.md) | Repository health/evidence decision model |
+| [Repository Metadata Template](templates/REPOSITORY_METADATA_TEMPLATE.yml) | Starter metadata contract for DPN repositories |
+| [CODEOWNERS Template](templates/CODEOWNERS_TEMPLATE) | Ownership pattern for repository-critical paths |
+| [Reusable Green Gate](.github/workflows/dpn-green-gate.yml) | Organization-hosted repository evidence check |
+| [Reusable CI](.github/workflows/dpn-reusable-ci.yml) | Parameterized install/lint/test/build workflow |
+| [Private Vulnerability Form](.github/VULNERABILITY_REPORT.yml) | Structured private security reporting intake |
+
+### Control-plane direction
+
+```mermaid
+flowchart LR
+  P[Policy] --> A[Automation]
+  A --> E[Evidence]
+  E --> R[Repository Health]
+  R --> O[Operational Integration]
+  O --> P
+```
+
+Product repositories remain responsible for truthful product-specific tests and runtime verification. Central automation standardizes evidence; it does not replace engineering judgment.
