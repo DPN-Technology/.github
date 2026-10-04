@@ -127,6 +127,9 @@ Product repositories remain responsible for truthful product-specific tests and 
 
 ## GitHub Enterprise Control Plane
 
+> **Enterprise source of truth:** [DPN Enterprise Control Plane](enterprise/README.md) — policy, repository classification, custom properties, access, Actions, rulesets, security rollout and activation.
+
+
 The Enterprise layer turns the DPN standards above into a centrally managed enforcement system.
 
 | Enterprise control | Purpose |
