@@ -48,7 +48,9 @@ jobs:
         shell: bash
     steps:
       - name: Checkout caller repository
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
 
       - name: Install
         if: ${{ inputs.install_command != '' }}
@@ -91,6 +93,9 @@ jobs:
             echo
             echo "- Repository: \`${GITHUB_REPOSITORY}\`"
             echo "- Commit: \`${GITHUB_SHA}\`"
+            echo "- Ref: \`${GITHUB_REF}\`"
+            echo "- Event: \`${GITHUB_EVENT_NAME}\`"
+            echo "- Actor: \`${GITHUB_ACTOR}\`"
             echo "- Run: \`${GITHUB_RUN_ID}\`"
             echo "- Working directory: \`${{ inputs.working_directory }}\`"
           } >> "$GITHUB_STEP_SUMMARY"
