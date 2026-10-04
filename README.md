@@ -135,6 +135,7 @@ The Enterprise layer turns the DPN standards above into a centrally managed enfo
 | [Enterprise Rollout](ENTERPRISE_ROLLOUT.md) | Audit → remediation → enforce deployment model |
 | [Enterprise Ruleset Blueprint](templates/ENTERPRISE_RULESET_BLUEPRINT.md) | Organization branch/push ruleset configuration |
 | [Enterprise Green Gate](.github/workflows/dpn-green-gate.yml) | Audit/enforce policy engine for repository evidence and workflow security |
+| [Enterprise Ruleset Gate](.github/workflows/dpn-enterprise-ruleset.yml) | Organization-ruleset entry point for centrally required pull-request policy |
 | [Enterprise Security](.github/workflows/dpn-enterprise-security.yml) | Reusable dependency review and OpenSSF security workflow |
 | [Artifact Provenance](.github/workflows/dpn-enterprise-artifact-attest.yml) | SHA-256 evidence and GitHub build provenance attestations |
 | [Enterprise workflow template](.github/workflow-templates/dpn-enterprise-security.yml) | Starter caller for new repositories |
