@@ -128,7 +128,7 @@ The Enterprise currently governs **20 repositories** under the DPN Technology or
 | **L2 YELLOW** | 2 | Staff/business operations |
 | **L1 GREEN** | 8 | Public-safe / general engineering |
 
-Repository names and internal details are intentionally not exposed here unless they are already appropriate for every Enterprise member.
+The canonical Overview source is stored in a **public** control-plane repository, so it intentionally publishes only aggregate estate counts and already-public repository details. The complete private/internal property assignment inventory is maintained separately in a private operational source of truth.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/DPN-Technology/.github/main/assets/dpn-command-fabric.svg" alt="DPN Command Fabric" width="100%">
@@ -172,6 +172,47 @@ DPN ENTERPRISE
 | **E3 — Public Surface** | Public repositories | Public-safe content, security policy, least-privilege workflows, secret hygiene |
 
 The target model uses **Enterprise custom properties** as the ruleset targeting language so policy follows repository purpose instead of relying on fragile hand-maintained repository lists.
+
+## Enforcement Workflow Matrix
+
+| Ruleset | Target | Required workflow | Gate posture |
+| --- | --- | --- | --- |
+| **E0 Baseline** | Maintained repositories | `dpn-enterprise-ruleset.yml` | Audit/Evaluate during rollout |
+| **E1 Elevated** | `governance_tier=elevated` | `dpn-enterprise-elevated-ruleset.yml` | Enforce repository evidence and workflow security |
+| **E2 Critical** | `governance_tier=critical` | `dpn-enterprise-critical-ruleset.yml` | Enforce strict ownership, dependency and workflow controls |
+| **E3 Public Surface** | `visibility=public` | `dpn-enterprise-public-ruleset.yml` | Enforce public-safe baseline |
+
+These workflows are separate entry points for GitHub rulesets but delegate evaluation to the same **DPN Enterprise Green Gate**. This keeps policy logic centralized while allowing Enterprise rulesets to apply different severity levels.
+
+### Critical / Elevated enforcement contract
+
+A Critical or Elevated repository is not ready for enforcement until it has:
+
+- a security policy;
+- CODEOWNERS;
+- an Enterprise-grade pull request template;
+- third-party dependency/license evidence;
+- immutable SHA-pinned external Actions;
+- explicit workflow permissions;
+- stable repository-specific CI;
+- release provenance when it publishes distributable artifacts.
+
+## Source vs. Effective State
+
+The Overview intentionally distinguishes **what is defined in source** from **what is active in GitHub Enterprise settings**.
+
+| Plane | Source-controlled state | Effective Enterprise state |
+| --- | --- | --- |
+| Property schema | Defined | Requires Enterprise-owner activation |
+| Repository assignments | Internal inventory ready | Requires values to be applied |
+| E0/E1/E2/E3 rulesets | Machine-readable definitions ready | Start Evaluate, then Active |
+| Required workflows | Implemented | Attach to the matching rulesets |
+| Actions policy | Defined | Requires Enterprise policy configuration |
+| PAT/App policy | Defined | Requires Enterprise policy configuration |
+| Security configurations | Designed | Apply where licensed |
+| Artifact provenance | Reusable workflow available | Enable per release-producing repository |
+
+**DPN does not call a control ACTIVE merely because the Markdown or YAML exists.**
 
 
 ## Enterprise Integration Fabric
@@ -260,8 +301,9 @@ The Enterprise control plane exists to make that evidence visible and increasing
 | [DPN Technology Organization](https://github.com/DPN-Technology) | Organization and repository estate |
 | [Enterprise Control Plane Source](https://github.com/DPN-Technology/.github/tree/main/enterprise) | Versioned Enterprise governance |
 | [Enterprise Policy](https://github.com/DPN-Technology/.github/blob/main/enterprise/policy.yml) | Machine-readable control baseline |
-| [Repository Classification](https://github.com/DPN-Technology/.github/blob/main/enterprise/repositories.yml) | Governance-tier source of truth |
+| [Public Estate Summary](https://github.com/DPN-Technology/.github/blob/main/enterprise/repositories.yml) | Public-safe aggregate governance counts and public repository properties |
 | [Ruleset Architecture](https://github.com/DPN-Technology/.github/blob/main/enterprise/RULESETS.md) | E0/E1/E2/E3 enforcement model |
+| [Machine-readable Rulesets](https://github.com/DPN-Technology/.github/blob/main/enterprise/rulesets.yml) | Ruleset targets, required workflows and promotion requirements |
 | [Actions Policy](https://github.com/DPN-Technology/.github/blob/main/enterprise/ACTIONS_POLICY.md) | Workflow and runner trust model |
 | [Access Model](https://github.com/DPN-Technology/.github/blob/main/enterprise/ACCESS_MODEL.md) | Roles, teams, PATs and GitHub Apps |
 | [Security Rollout](https://github.com/DPN-Technology/.github/blob/main/enterprise/SECURITY_ROLLOUT.md) | Audit → security configuration → enforce |
