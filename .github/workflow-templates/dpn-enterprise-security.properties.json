@@ -1,0 +1,6 @@
+{
+  "name": "DPN Enterprise Security",
+  "description": "DPN Enterprise Green Gate plus optional dependency and supply-chain security checks.",
+  "iconName": "octicon-shield-lock",
+  "categories": ["Continuous integration", "Security"]
+}
