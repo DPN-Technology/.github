@@ -41,6 +41,73 @@ Its job is to make engineering policy consistent across the DPN ecosystem while 
 | Release provenance | **AVAILABLE** | Expand to all distributable products |
 | Security configuration tiers | **ROLLOUT** | Apply where licensed and supported |
 
+## Enterprise Command Matrix
+
+| Domain | Enterprise owner decision | Organization implementation | Repository evidence |
+| --- | --- | --- | --- |
+| **Identity** | Who may administer the Enterprise | Org owners, teams, custom roles | CODEOWNERS / access reviews |
+| **Source Control** | Global merge and bypass policy | Organization rulesets | PR history + required checks |
+| **Actions** | Allowed execution model | Reusable workflows / runner policy | Explicit permissions + SHA pins |
+| **Security** | Security configuration baseline | Security configuration targeting | Code/dependency/secret findings |
+| **Supply Chain** | Trusted build requirements | Shared attestation workflow | Checksums + provenance |
+| **Release** | Promotion authority | Release managers / environments | Version + artifacts + rollback |
+| **Audit** | Retention and review expectations | Enterprise/organization audit | Exceptions + bypass evidence |
+| **Operations** | Integration and recovery policy | DPN Operational Control / WatchTower | Health, incident, recovery evidence |
+
+### Enterprise promotion ladder
+
+```text
+DEFINED
+   ↓
+AUDIT / EVALUATE
+   ↓
+FINDINGS REMEDIATED
+   ↓
+ENFORCED / ACTIVE
+   ↓
+MEASURED
+   ↓
+REVIEWED
+   ↓
+IMPROVED
+```
+
+No DPN control should jump directly from **defined** to **enforced** without evidence that the affected repositories can comply.
+
+## Executive Control Objectives
+
+### 01 // CONTROL THE BLAST RADIUS
+Critical repositories receive stronger rules, narrower bypass authority and stronger release evidence than ordinary development repositories.
+
+### 02 // MAKE POLICY MACHINE-READABLE
+Enterprise custom properties classify repositories so policy follows system purpose automatically.
+
+### 03 // CENTRALIZE WITHOUT CREATING A MONOLITH
+The Enterprise defines the floor. Product repositories keep their own language-specific tests, builds and runtime validation.
+
+### 04 // PROVE RELEASE ORIGIN
+Distributable DPN artifacts should be connected to protected source, a specific commit, checksums and GitHub provenance attestations.
+
+### 05 // MAKE EXCEPTIONS VISIBLE
+A bypass must have an actor, reason, risk owner, compensating control and follow-up. Silent bypass is not accepted governance.
+
+## Policy Activation Dashboard
+
+| Priority | Control | Target state |
+| --- | --- | --- |
+| **P0** | Enterprise owner / organization owner review | Minimal privileged administrators |
+| **P1** | Enterprise custom properties | Created and assigned to all governed repos |
+| **P2** | E0 Enterprise Baseline ruleset | Evaluate → Active |
+| **P2** | E1 Elevated ruleset | Property-targeted and Active |
+| **P2** | E2 Critical ruleset | Property-targeted, restricted bypass |
+| **P2** | E3 Public Surface ruleset | Public-safe engineering baseline |
+| **P3** | Actions execution policy | Read-only defaults + reviewed events/actions |
+| **P4** | Fine-grained PAT policy | Approval + bounded lifetime |
+| **P5** | Repository lifecycle controls | Creation, deletion, transfer, visibility governed |
+| **P6** | Security configurations | Applied by tier where licensed |
+| **P7** | Trusted releases | Provenance/checksums on distributable products |
+
+
 ## DPN Governance Estate
 
 The Enterprise currently governs **20 repositories** under the DPN Technology organization.
@@ -106,6 +173,56 @@ DPN ENTERPRISE
 
 The target model uses **Enterprise custom properties** as the ruleset targeting language so policy follows repository purpose instead of relying on fragile hand-maintained repository lists.
 
+
+## Enterprise Integration Fabric
+
+DPN Enterprise governance is intended to feed the wider DPN operational ecosystem rather than remain isolated inside GitHub.
+
+```mermaid
+flowchart LR
+  GH["GitHub Enterprise"] --> EVT["Audit / Workflow / Security Events"]
+  EVT --> OC["DPN Operational Control"]
+  EVT --> WT["DPN WatchTower"]
+  OC --> SD["DPN Service Desk"]
+  WT --> SD
+  SD --> ENG["Engineering Response"]
+  ENG --> GH
+```
+
+### Integration contract
+
+Future integrations should preserve:
+
+- authenticated event origin;
+- least-privilege GitHub App scopes;
+- replay protection;
+- event identifiers and timestamps;
+- durable audit records;
+- failure/retry behavior;
+- secret rotation;
+- no exposure of higher-clearance data into public systems.
+
+GitHub becomes a **source of engineering truth**, while DPN Operational Control becomes the operational correlation layer.
+
+## Release Trust Plane
+
+For release-producing repositories, the target evidence chain is:
+
+```text
+PROTECTED SOURCE
+  → REQUIRED CHECKS
+  → APPROVED MERGE
+  → REPEATABLE BUILD
+  → ARTIFACT INVENTORY
+  → SHA-256
+  → GITHUB ATTESTATION
+  → RELEASE RECORD
+  → INSTALL / UPGRADE GUIDANCE
+  → ROLLBACK / RECOVERY
+```
+
+A DPN release is not considered strongly evidenced merely because a tag exists.
+
 ## Security + Trust Model
 
 <p align="center">
@@ -150,6 +267,30 @@ The Enterprise control plane exists to make that evidence visible and increasing
 | [Security Rollout](https://github.com/DPN-Technology/.github/blob/main/enterprise/SECURITY_ROLLOUT.md) | Audit → security configuration → enforce |
 | [Enterprise Activation Tracker](https://github.com/DPN-Technology/.github/issues/5) | Enterprise-owner activation work |
 | [DPN GitHub Command Center](https://dpn-technology.github.io/) | Public-safe DPN engineering command center |
+
+
+## Enterprise Health Definition
+
+The Enterprise should be considered **GREEN** only when all of the following are true:
+
+- no unresolved critical policy violations;
+- critical repositories are on enforced governance;
+- required workflows are reporting reliably;
+- no known exposed secrets remain unresolved;
+- release-producing critical/elevated repositories have provenance controls;
+- Enterprise/organization bypass use is explainable and reviewed;
+- access is aligned to least privilege;
+- failing security gates represent real findings rather than broken automation;
+- the source-controlled policy matches the effective GitHub settings.
+
+### Status language
+
+| State | Meaning |
+| --- | --- |
+| **GREEN** | Required controls pass and effective settings match policy |
+| **AMBER** | Development may continue, but known governance findings remain |
+| **RED** | Required policy is failing or a high-impact control is missing |
+| **PURPLE** | Critical infrastructure/security escalation requiring executive attention |
 
 ## Rollout State
 
