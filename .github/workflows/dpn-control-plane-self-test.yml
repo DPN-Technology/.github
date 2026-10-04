@@ -73,14 +73,19 @@ jobs:
               rb"(?m)^[ \t]*-----BEGIN (?:RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----[ \t]*\r?$"
           )
 
+          begin = b"-----BEGIN " + b"PRIVATE KEY-----"
+          end = b"-----END " + b"PRIVATE KEY-----"
+          rsa_begin = b"-----BEGIN RSA " + b"PRIVATE KEY-----"
+          rsa_end = b"-----END RSA " + b"PRIVATE KEY-----"
+
           real_pem = (
-              b"-----BEGIN PRIVATE KEY-----\n"
-              b"ZmFrZS1maXh0dXJlLWJ1dC1wZW0tbGluZS1zaGFwZQ==\n"
-              b"-----END PRIVATE KEY-----\n"
+              begin + b"\n"
+              + b"ZmFrZS1maXh0dXJlLWJ1dC1wZW0tbGluZS1zaGFwZQ==\n"
+              + end + b"\n"
           )
           source_literal = (
-              b'_PRIVATE_KEY_MARKER = "-----BEGIN PRIVATE KEY-----"\\n'
-              b'test_value = "-----BEGIN RSA PRIVATE KEY-----\\nabc\\n-----END RSA PRIVATE KEY-----"\\n'
+              b'_PRIVATE_KEY_MARKER = "' + begin + b'"\\n'
+              + b'test_value = "' + rsa_begin + b'\\nabc\\n' + rsa_end + b'"\\n'
           )
 
           if not detector.search(real_pem):
