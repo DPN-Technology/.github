@@ -3,6 +3,8 @@ organization: DPN-Technology
 classification_status: initial-enterprise-baseline
 repositories:
   - name: .github
+    dpn_product: .github
+    lifecycle: development
     visibility: public
     governance_tier: critical
     criticality: tier-1
@@ -13,6 +15,8 @@ repositories:
     security_tier: critical
 
   - name: DPN-Operational-Control
+    dpn_product: DPN-Operational-Control
+    lifecycle: development
     visibility: private
     governance_tier: critical
     criticality: tier-1
@@ -23,6 +27,8 @@ repositories:
     security_tier: critical
 
   - name: DPN-Executive-Control-System
+    dpn_product: DPN-Executive-Control-System
+    lifecycle: development
     visibility: private
     governance_tier: critical
     criticality: tier-1
@@ -33,6 +39,8 @@ repositories:
     security_tier: critical
 
   - name: DPN-Watch-Tower
+    dpn_product: DPN-Watch-Tower
+    lifecycle: development
     visibility: private
     governance_tier: critical
     criticality: tier-1
@@ -43,6 +51,8 @@ repositories:
     security_tier: critical
 
   - name: DPN-AI
+    dpn_product: DPN-AI
+    lifecycle: development
     visibility: private
     governance_tier: critical
     criticality: tier-1
@@ -53,6 +63,8 @@ repositories:
     security_tier: critical
 
   - name: DPN-One
+    dpn_product: DPN-One
+    lifecycle: development
     visibility: private
     governance_tier: critical
     criticality: tier-1
@@ -63,6 +75,8 @@ repositories:
     security_tier: critical
 
   - name: DPN-Human-Resources-Software
+    dpn_product: DPN-Human-Resources-Software
+    lifecycle: development
     visibility: private
     governance_tier: critical
     criticality: tier-1
@@ -73,6 +87,8 @@ repositories:
     security_tier: critical
 
   - name: DPN-Workforce-Time-Management-System
+    dpn_product: DPN-Workforce-Time-Management-System
+    lifecycle: development
     visibility: private
     governance_tier: critical
     criticality: tier-1
@@ -83,6 +99,8 @@ repositories:
     security_tier: critical
 
   - name: DPN-Network-Mapper
+    dpn_product: DPN-Network-Mapper
+    lifecycle: development
     visibility: private
     governance_tier: elevated
     criticality: tier-2
@@ -93,6 +111,8 @@ repositories:
     security_tier: elevated
 
   - name: DPN-OS
+    dpn_product: DPN-OS
+    lifecycle: development
     visibility: private
     governance_tier: elevated
     criticality: tier-2
@@ -103,6 +123,8 @@ repositories:
     security_tier: elevated
 
   - name: DPN-Service-Desk
+    dpn_product: DPN-Service-Desk
+    lifecycle: development
     visibility: private
     governance_tier: elevated
     criticality: tier-2
@@ -113,6 +135,8 @@ repositories:
     security_tier: elevated
 
   - name: DPN-Aqua-Labs-Point-of-Sale-System
+    dpn_product: DPN-Aqua-Labs-Point-of-Sale-System
+    lifecycle: development
     visibility: private
     governance_tier: elevated
     criticality: tier-2
@@ -123,6 +147,8 @@ repositories:
     security_tier: elevated
 
   - name: DPN-Death-the-Developer
+    dpn_product: DPN-Death-the-Developer
+    lifecycle: development
     visibility: private
     governance_tier: elevated
     criticality: tier-2
@@ -133,6 +159,8 @@ repositories:
     security_tier: elevated
 
   - name: DPN-Website
+    dpn_product: DPN-Website
+    lifecycle: development
     visibility: private
     governance_tier: standard
     criticality: tier-3
@@ -143,6 +171,8 @@ repositories:
     security_tier: baseline
 
   - name: DPN-Technology.github.io
+    dpn_product: DPN-Technology.github.io
+    lifecycle: release
     visibility: public
     governance_tier: standard
     criticality: tier-3
@@ -153,6 +183,8 @@ repositories:
     security_tier: baseline
 
   - name: DPN-QB-FiveM-Scripts
+    dpn_product: DPN-QB-FiveM-Scripts
+    lifecycle: development
     visibility: public
     governance_tier: standard
     criticality: tier-3
@@ -163,6 +195,8 @@ repositories:
     security_tier: baseline
 
   - name: DPN-Tool-Die-Simulator
+    dpn_product: DPN-Tool-Die-Simulator
+    lifecycle: development
     visibility: private
     governance_tier: standard
     criticality: tier-3
@@ -173,6 +207,8 @@ repositories:
     security_tier: baseline
 
   - name: DPN-War-Simulator
+    dpn_product: DPN-War-Simulator
+    lifecycle: development
     visibility: public
     governance_tier: standard
     criticality: tier-3
@@ -183,6 +219,8 @@ repositories:
     security_tier: baseline
 
   - name: MemeSpace
+    dpn_product: MemeSpace
+    lifecycle: development
     visibility: private
     governance_tier: standard
     criticality: tier-3
@@ -193,6 +231,8 @@ repositories:
     security_tier: baseline
 
   - name: DreamBound-Adventures
+    dpn_product: DreamBound-Adventures
+    lifecycle: development
     visibility: public
     governance_tier: standard
     criticality: tier-3
