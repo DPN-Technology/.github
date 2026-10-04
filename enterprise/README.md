@@ -17,6 +17,7 @@ The Enterprise account is treated as a governance layer above the organization, 
 
 | File | Purpose |
 | --- | --- |
+| [OVERVIEW.md](OVERVIEW.md) | Canonical content for the GitHub Enterprise Overview README |
 | [policy.yml](policy.yml) | Machine-readable Enterprise defaults and governance tiers |
 | [repositories.yml](repositories.yml) | Initial DPN repository classification |
 | [CUSTOM_PROPERTIES.md](CUSTOM_PROPERTIES.md) | GitHub Enterprise custom-property schema |
@@ -46,3 +47,10 @@ flowchart TD
 ## Rollout rule
 
 New controls start in **audit/evaluate** mode where possible. They become enforced only after the affected repositories can satisfy them without bypassing legitimate development.
+
+
+## Enterprise Overview README
+
+GitHub Enterprise Cloud supports an Enterprise README on the Enterprise **Overview** landing page. The canonical DPN content is maintained in [OVERVIEW.md](OVERVIEW.md).
+
+Because the Enterprise Overview editor is an Enterprise-owner setting rather than a repository file, update the GitHub Enterprise Overview from this canonical source after changes are reviewed and merged.
