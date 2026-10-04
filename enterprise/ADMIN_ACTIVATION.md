@@ -19,11 +19,14 @@ These controls are defined in source but require an Enterprise Owner to activate
 
 ## Priority 1 — Repository governance
 - create the enterprise custom properties defined in `policy.yml`;
-- populate repository classifications from `repositories.yml`;
-- create E0 baseline ruleset in Evaluate mode;
-- create E1 Elevated and E2 Critical rulesets using property targeting;
-- use `.github/workflows/dpn-enterprise-ruleset.yml` as the required-workflow entry point;
-- move rulesets to Active after evaluation.
+- use the **private operational inventory** as the assignment source for private/internal repositories;
+- use `enterprise/repositories.yml` only as the public-safe aggregate/public-repository mirror;
+- create E0 Baseline in Evaluate mode using `.github/workflows/dpn-enterprise-ruleset.yml`;
+- create E1 Elevated targeting `governance_tier=elevated` using `.github/workflows/dpn-enterprise-elevated-ruleset.yml`;
+- create E2 Critical targeting `governance_tier=critical` using `.github/workflows/dpn-enterprise-critical-ruleset.yml`;
+- create E3 Public Surface targeting public repositories using `.github/workflows/dpn-enterprise-public-ruleset.yml`;
+- review bypass actors before activation;
+- move rulesets to Active only after evaluation findings are remediated.
 
 ## Priority 2 — Actions
 - set default workflow token permission to read;
