@@ -1,0 +1,203 @@
+version: 1
+organization: DPN-Technology
+classification_status: initial-enterprise-baseline
+repositories:
+  - name: .github
+    visibility: public
+    governance_tier: critical
+    criticality: tier-1
+    clearance: L1-GREEN
+    component: control-plane
+    customer_facing: true
+    release_channel: none
+    security_tier: critical
+
+  - name: DPN-Operational-Control
+    visibility: private
+    governance_tier: critical
+    criticality: tier-1
+    clearance: L4-PURPLE
+    component: control-plane
+    customer_facing: false
+    release_channel: dev
+    security_tier: critical
+
+  - name: DPN-Executive-Control-System
+    visibility: private
+    governance_tier: critical
+    criticality: tier-1
+    clearance: L4-PURPLE
+    component: application
+    customer_facing: false
+    release_channel: dev
+    security_tier: critical
+
+  - name: DPN-Watch-Tower
+    visibility: private
+    governance_tier: critical
+    criticality: tier-1
+    clearance: L4-PURPLE
+    component: service
+    customer_facing: false
+    release_channel: dev
+    security_tier: critical
+
+  - name: DPN-AI
+    visibility: private
+    governance_tier: critical
+    criticality: tier-1
+    clearance: L3-RED
+    component: service
+    customer_facing: false
+    release_channel: dev
+    security_tier: critical
+
+  - name: DPN-One
+    visibility: private
+    governance_tier: critical
+    criticality: tier-1
+    clearance: L3-RED
+    component: application
+    customer_facing: false
+    release_channel: dev
+    security_tier: critical
+
+  - name: DPN-Human-Resources-Software
+    visibility: private
+    governance_tier: critical
+    criticality: tier-1
+    clearance: L3-RED
+    component: application
+    customer_facing: false
+    release_channel: dev
+    security_tier: critical
+
+  - name: DPN-Workforce-Time-Management-System
+    visibility: private
+    governance_tier: critical
+    criticality: tier-1
+    clearance: L3-RED
+    component: application
+    customer_facing: false
+    release_channel: dev
+    security_tier: critical
+
+  - name: DPN-Network-Mapper
+    visibility: private
+    governance_tier: elevated
+    criticality: tier-2
+    clearance: L3-RED
+    component: infrastructure
+    customer_facing: false
+    release_channel: dev
+    security_tier: elevated
+
+  - name: DPN-OS
+    visibility: private
+    governance_tier: elevated
+    criticality: tier-2
+    clearance: L3-RED
+    component: infrastructure
+    customer_facing: false
+    release_channel: dev
+    security_tier: elevated
+
+  - name: DPN-Service-Desk
+    visibility: private
+    governance_tier: elevated
+    criticality: tier-2
+    clearance: L2-YELLOW
+    component: application
+    customer_facing: false
+    release_channel: dev
+    security_tier: elevated
+
+  - name: DPN-Aqua-Labs-Point-of-Sale-System
+    visibility: private
+    governance_tier: elevated
+    criticality: tier-2
+    clearance: L2-YELLOW
+    component: application
+    customer_facing: true
+    release_channel: dev
+    security_tier: elevated
+
+  - name: DPN-Death-the-Developer
+    visibility: private
+    governance_tier: elevated
+    criticality: tier-2
+    clearance: L3-RED
+    component: agent
+    customer_facing: false
+    release_channel: dev
+    security_tier: elevated
+
+  - name: DPN-Website
+    visibility: private
+    governance_tier: standard
+    criticality: tier-3
+    clearance: L1-GREEN
+    component: website
+    customer_facing: true
+    release_channel: dev
+    security_tier: baseline
+
+  - name: DPN-Technology.github.io
+    visibility: public
+    governance_tier: standard
+    criticality: tier-3
+    clearance: L1-GREEN
+    component: website
+    customer_facing: true
+    release_channel: stable
+    security_tier: baseline
+
+  - name: DPN-QB-FiveM-Scripts
+    visibility: public
+    governance_tier: standard
+    criticality: tier-3
+    clearance: L1-GREEN
+    component: library
+    customer_facing: true
+    release_channel: dev
+    security_tier: baseline
+
+  - name: DPN-Tool-Die-Simulator
+    visibility: private
+    governance_tier: standard
+    criticality: tier-3
+    clearance: L1-GREEN
+    component: simulation
+    customer_facing: false
+    release_channel: dev
+    security_tier: baseline
+
+  - name: DPN-War-Simulator
+    visibility: public
+    governance_tier: standard
+    criticality: tier-3
+    clearance: L1-GREEN
+    component: simulation
+    customer_facing: true
+    release_channel: dev
+    security_tier: baseline
+
+  - name: MemeSpace
+    visibility: private
+    governance_tier: standard
+    criticality: tier-3
+    clearance: L1-GREEN
+    component: application
+    customer_facing: true
+    release_channel: dev
+    security_tier: baseline
+
+  - name: DreamBound-Adventures
+    visibility: public
+    governance_tier: standard
+    criticality: tier-3
+    clearance: L1-GREEN
+    component: application
+    customer_facing: true
+    release_channel: dev
+    security_tier: baseline
