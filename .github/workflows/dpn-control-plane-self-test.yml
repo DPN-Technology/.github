@@ -68,6 +68,7 @@ jobs:
           set -euo pipefail
           test -s enterprise/OVERVIEW.md
           test -s enterprise/policy.yml
+          test -s enterprise/custom-properties.schema.json
           test -s enterprise/repositories.yml
           test -s enterprise/rulesets.yml
           test -s enterprise/RULESETS.md
@@ -114,10 +115,21 @@ jobs:
               "clearance", "component", "customer_facing",
               "release_channel", "security_tier"
           }
-          found = set(re.findall(r"^\s*- name:\s*([A-Za-z0-9_$#-]+)\s*$", policy, re.M))
+          found = set(re.findall(r"^\s*- property_name:\s*([A-Za-z0-9_$#-]+)\s*$", policy, re.M))
           missing = sorted(required_props - found)
           if missing:
               raise SystemExit(f"Missing Enterprise property definitions: {missing}")
+
+          import json
+          schema = json.loads(Path("enterprise/custom-properties.schema.json").read_text(encoding="utf-8"))
+          schema_props = {x["property_name"]: x for x in schema.get("properties", [])}
+          if set(schema_props) != required_props:
+              raise SystemExit(
+                  "JSON property schema mismatch: "
+                  f"expected={sorted(required_props)} actual={sorted(schema_props)}"
+              )
+          if schema_props["customer_facing"].get("value_type") != "true_false":
+              raise SystemExit("customer_facing must use GitHub value_type true_false")
 
           required_workflows = {
               ".github/workflows/dpn-enterprise-ruleset.yml",
