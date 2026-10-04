@@ -11,6 +11,7 @@ on:
       - "REPOSITORY_METADATA_STANDARD.md"
       - "enterprise/**"
       - "templates/**"
+      - "THIRD_PARTY_LICENSES.md"
       - "README.md"
   push:
     branches: [main]
@@ -23,6 +24,7 @@ on:
       - "REPOSITORY_METADATA_STANDARD.md"
       - "enterprise/**"
       - "templates/**"
+      - "THIRD_PARTY_LICENSES.md"
       - "README.md"
   workflow_dispatch:
 
@@ -35,8 +37,9 @@ jobs:
     with:
       lifecycle: release
       enterprise_mode: audit
+      governance_tier: critical
       require_security_policy: true
-      require_dependency_record: false
+      require_dependency_record: true
       require_runbook: false
       require_codeowners: true
       require_pr_template: true
@@ -65,13 +68,21 @@ jobs:
           set -euo pipefail
           test -s enterprise/OVERVIEW.md
           test -s enterprise/policy.yml
+          test -s enterprise/custom-properties.schema.json
           test -s enterprise/repositories.yml
+          test -s enterprise/rulesets.yml
           test -s enterprise/RULESETS.md
           test -s enterprise/ACTIONS_POLICY.md
           test -s enterprise/ACCESS_MODEL.md
           test -s enterprise/CUSTOM_PROPERTIES.md
           test -s enterprise/SECURITY_ROLLOUT.md
           test -s enterprise/ADMIN_ACTIVATION.md
+          test -s enterprise/EFFECTIVE_STATE.md
+          test -s THIRD_PARTY_LICENSES.md
+          test -s .github/workflows/dpn-enterprise-ruleset.yml
+          test -s .github/workflows/dpn-enterprise-elevated-ruleset.yml
+          test -s .github/workflows/dpn-enterprise-critical-ruleset.yml
+          test -s .github/workflows/dpn-enterprise-public-ruleset.yml
 
           python3 - <<'PY'
           from pathlib import Path
@@ -80,12 +91,17 @@ jobs:
           overview = Path("enterprise/OVERVIEW.md").read_text(encoding="utf-8")
           policy = Path("enterprise/policy.yml").read_text(encoding="utf-8")
           repos = Path("enterprise/repositories.yml").read_text(encoding="utf-8")
+          rulesets = Path("enterprise/rulesets.yml").read_text(encoding="utf-8")
 
           for required_text in [
               "DPN Enterprise // Control Plane",
               "DPN Governance Estate",
               "Ruleset Stack",
+              "Enforcement Workflow Matrix",
+              "Source vs. Effective State",
               "Enterprise Quick Access",
+              "Enterprise Health Definition",
+              "Effective State Register",
               "Rollout State",
           ]:
               if required_text not in overview:
@@ -99,33 +115,79 @@ jobs:
               "clearance", "component", "customer_facing",
               "release_channel", "security_tier"
           }
-          found = set(re.findall(r"^\s*- name:\s*([A-Za-z0-9_$#-]+)\s*$", policy, re.M))
+          found = set(re.findall(r"^\s*- property_name:\s*([A-Za-z0-9_$#-]+)\s*$", policy, re.M))
           missing = sorted(required_props - found)
           if missing:
               raise SystemExit(f"Missing Enterprise property definitions: {missing}")
 
-          repo_names = re.findall(r"^\s*- name:\s*([^\n]+)\s*$", repos, re.M)
-          if len(repo_names) < 20:
-              raise SystemExit(f"Expected at least 20 classified repositories, found {len(repo_names)}")
+          import json
+          schema = json.loads(Path("enterprise/custom-properties.schema.json").read_text(encoding="utf-8"))
+          schema_props = {x["property_name"]: x for x in schema.get("properties", [])}
+          if set(schema_props) != required_props:
+              raise SystemExit(
+                  "JSON property schema mismatch: "
+                  f"expected={sorted(required_props)} actual={sorted(schema_props)}"
+              )
+          if schema_props["customer_facing"].get("value_type") != "true_false":
+              raise SystemExit("customer_facing must use GitHub value_type true_false")
 
-          valid_tiers = {"critical", "elevated", "standard", "experimental"}
-          tiers = [x.strip() for x in re.findall(r"^\s+governance_tier:\s*([^\n]+)\s*$", repos, re.M)]
-          invalid = sorted({x for x in tiers if x not in valid_tiers})
-          if invalid:
-              raise SystemExit(f"Invalid governance tiers: {invalid}")
-
-          clearances = [x.strip() for x in re.findall(r"^\s+clearance:\s*([^\n]+)\s*$", repos, re.M)]
-          expected_counts = {
-              "governed": len(repo_names),
-              "critical": tiers.count("critical"),
-              "elevated": tiers.count("elevated"),
-              "standard": tiers.count("standard"),
-              "experimental": tiers.count("experimental"),
-              "L4-PURPLE": clearances.count("L4-PURPLE"),
-              "L3-RED": clearances.count("L3-RED"),
-              "L2-YELLOW": clearances.count("L2-YELLOW"),
-              "L1-GREEN": clearances.count("L1-GREEN"),
+          required_workflows = {
+              ".github/workflows/dpn-enterprise-ruleset.yml",
+              ".github/workflows/dpn-enterprise-elevated-ruleset.yml",
+              ".github/workflows/dpn-enterprise-critical-ruleset.yml",
+              ".github/workflows/dpn-enterprise-public-ruleset.yml",
           }
+          absent_policy_workflows = sorted(x for x in required_workflows if x not in policy)
+          if absent_policy_workflows:
+              raise SystemExit(f"Policy missing required-workflow bindings: {absent_policy_workflows}")
+
+          for rule_id in ("E0", "E1", "E2", "E3"):
+              if f"id: {rule_id}" not in rulesets:
+                  raise SystemExit(f"Machine-readable rulesets missing {rule_id}")
+          absent_ruleset_workflows = sorted(x for x in required_workflows if x not in rulesets)
+          if absent_ruleset_workflows:
+              raise SystemExit(f"rulesets.yml missing workflow bindings: {absent_ruleset_workflows}")
+
+          if "publish_private_repository_names: false" not in repos:
+              raise SystemExit("Public repository summary must explicitly disable private repository name publication")
+          if re.search(r"(?m)^\s+visibility:\s*private\s*$", repos):
+              raise SystemExit("Public Enterprise repository summary contains a private repository entry")
+
+          def count(label):
+              m = re.search(rf"(?m)^\s{{4}}{re.escape(label)}:\s*(\d+)\s*$", repos)
+              if not m:
+                  raise SystemExit(f"Missing estate count: {label}")
+              return int(m.group(1))
+
+          governed_match = re.search(r"(?m)^\s{2}governed_repositories:\s*(\d+)\s*$", repos)
+          if not governed_match:
+              raise SystemExit("Missing governed_repositories count")
+          governed = int(governed_match.group(1))
+
+          expected_counts = {
+              "governed": governed,
+              "critical": count("critical"),
+              "elevated": count("elevated"),
+              "standard": count("standard"),
+              "experimental": count("experimental"),
+              "L4-PURPLE": count("L4-PURPLE"),
+              "L3-RED": count("L3-RED"),
+              "L2-YELLOW": count("L2-YELLOW"),
+              "L1-GREEN": count("L1-GREEN"),
+          }
+
+          public_section = repos.split("public_repositories:", 1)
+          if len(public_section) != 2:
+              raise SystemExit("Missing public_repositories section")
+          public_blocks = re.split(r"(?m)^  - name:\s*", public_section[1])[1:]
+          if len(public_blocks) != 5:
+              raise SystemExit(f"Expected 5 public repository records, found {len(public_blocks)}")
+
+          for block in public_blocks:
+              name = block.splitlines()[0].strip()
+              for prop in required_props:
+                  if not re.search(rf"(?m)^\s{{4}}{re.escape(prop)}:\s*.+$", block):
+                      raise SystemExit(f"Public repository {name} missing required property {prop}")
 
           required_overview_facts = [
               f"GOVERNED%20REPOSITORIES-{expected_counts['governed']}",
@@ -141,12 +203,13 @@ jobs:
           stale = [fact for fact in required_overview_facts if fact not in overview]
           if stale:
               raise SystemExit(
-                  "Enterprise Overview is stale relative to repository classification: "
+                  "Enterprise Overview is stale relative to public-safe estate summary: "
                   + "; ".join(stale)
               )
 
           print(
-              "Validated Enterprise Overview against "
-              f"{len(repo_names)} repository classifications: {expected_counts}"
+              "Validated DPN Enterprise control plane: "
+              f"estate={expected_counts}; public_records={len(public_blocks)}; "
+              "rulesets=E0/E1/E2/E3"
           )
           PY

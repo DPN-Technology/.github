@@ -1,0 +1,77 @@
+version: 1
+enterprise: DPN Enterprise
+organization: DPN-Technology
+rollout:
+  initial_state: evaluate
+  target_state: active
+  bypass_model: exception-only
+
+rulesets:
+  - id: E0
+    name: DPN Enterprise Baseline
+    target:
+      repositories: maintained
+    enforcement: evaluate
+    required_workflow: .github/workflows/dpn-enterprise-ruleset.yml
+    rules:
+      pull_request_required: true
+      conversation_resolution: true
+      block_force_push: true
+      block_default_branch_deletion: true
+      required_status_checks: true
+
+  - id: E1
+    name: DPN Enterprise Elevated
+    target:
+      custom_property:
+        governance_tier: elevated
+    enforcement: evaluate
+    required_workflow: .github/workflows/dpn-enterprise-elevated-ruleset.yml
+    rules:
+      minimum_approvals: 1
+      require_codeowners: true
+      dependency_record: true
+      action_sha_pinning: true
+      explicit_workflow_permissions: true
+      release_provenance: true
+
+  - id: E2
+    name: DPN Enterprise Critical
+    target:
+      custom_property:
+        governance_tier: critical
+    enforcement: evaluate
+    required_workflow: .github/workflows/dpn-enterprise-critical-ruleset.yml
+    rules:
+      minimum_approvals: 1
+      require_codeowners: true
+      restrict_bypass: true
+      protect_release_tags: true
+      security_policy: true
+      dependency_record: true
+      action_sha_pinning: true
+      explicit_workflow_permissions: true
+      release_provenance: true
+      rollback_evidence: true
+
+  - id: E3
+    name: DPN Enterprise Public Surface
+    target:
+      visibility: public
+    enforcement: evaluate
+    required_workflow: .github/workflows/dpn-enterprise-public-ruleset.yml
+    rules:
+      security_policy: true
+      pull_request_template: true
+      action_sha_pinning: true
+      explicit_workflow_permissions: true
+      public_safe_content: true
+
+promotion:
+  evaluate_to_active:
+    requires:
+      - required_workflow_reports_reliably
+      - blocking_findings_remediated
+      - bypass_actors_reviewed
+      - rollback_path_documented
+      - effective_settings_match_source_policy

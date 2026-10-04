@@ -5,6 +5,14 @@ enterprise:
   governance_model: centralized
   default_mode: audit
   target_mode: enforce
+  governance_sources:
+    public_policy: DPN-Technology/.github
+    internal_inventory: private-operational-inventory
+  required_workflows:
+    baseline: .github/workflows/dpn-enterprise-ruleset.yml
+    elevated: .github/workflows/dpn-enterprise-elevated-ruleset.yml
+    critical: .github/workflows/dpn-enterprise-critical-ruleset.yml
+    public_surface: .github/workflows/dpn-enterprise-public-ruleset.yml
 
 defaults:
   repository_visibility:
@@ -99,37 +107,72 @@ tiers:
       owner_review: false
 
 custom_properties:
-  - name: dpn_product
-    type: string
+  - property_name: dpn_product
+    value_type: string
     required: true
-  - name: lifecycle
-    type: single_select
+    description: Canonical DPN product or system identity.
+    values_editable_by: org_actors
+    require_explicit_values: true
+
+  - property_name: lifecycle
+    value_type: single_select
     required: true
-    values: [concept, prototype, development, preview, release, maintenance, retired]
-  - name: governance_tier
-    type: single_select
+    description: Current evidence-backed engineering lifecycle.
+    allowed_values: [concept, prototype, development, preview, release, maintenance, retired]
+    values_editable_by: org_actors
+    require_explicit_values: true
+
+  - property_name: governance_tier
+    value_type: single_select
     required: true
-    values: [critical, elevated, standard, experimental]
-  - name: criticality
-    type: single_select
+    description: DPN Enterprise policy tier used for ruleset targeting.
+    allowed_values: [critical, elevated, standard, experimental]
+    values_editable_by: org_actors
+    require_explicit_values: true
+
+  - property_name: criticality
+    value_type: single_select
     required: true
-    values: [tier-1, tier-2, tier-3, experimental]
-  - name: clearance
-    type: single_select
+    description: Operational criticality of the repository.
+    allowed_values: [tier-1, tier-2, tier-3, experimental]
+    values_editable_by: org_actors
+    require_explicit_values: true
+
+  - property_name: clearance
+    value_type: single_select
     required: true
-    values: [L1-GREEN, L2-YELLOW, L3-RED, L4-PURPLE]
-  - name: component
-    type: single_select
+    description: DPN information classification.
+    allowed_values: [L1-GREEN, L2-YELLOW, L3-RED, L4-PURPLE]
+    values_editable_by: org_actors
+    require_explicit_values: true
+
+  - property_name: component
+    value_type: single_select
     required: true
-    values: [application, service, infrastructure, website, library, simulation, agent, documentation, control-plane]
-  - name: customer_facing
-    type: boolean
+    description: Primary engineering component type.
+    allowed_values: [application, service, infrastructure, website, library, simulation, agent, documentation, control-plane]
+    values_editable_by: org_actors
+    require_explicit_values: true
+
+  - property_name: customer_facing
+    value_type: true_false
     required: true
-  - name: release_channel
-    type: single_select
+    description: Whether external users or customers directly depend on the repository.
+    values_editable_by: org_actors
+    require_explicit_values: true
+
+  - property_name: release_channel
+    value_type: single_select
     required: true
-    values: [dev, beta, stable, none]
-  - name: security_tier
-    type: single_select
+    description: Current release channel.
+    allowed_values: [dev, beta, stable, none]
+    values_editable_by: org_actors
+    require_explicit_values: true
+
+  - property_name: security_tier
+    value_type: single_select
     required: true
-    values: [baseline, elevated, critical]
+    description: Security control tier.
+    allowed_values: [baseline, elevated, critical]
+    values_editable_by: org_actors
+    require_explicit_values: true
