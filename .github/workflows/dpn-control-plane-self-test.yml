@@ -76,6 +76,7 @@ jobs:
           test -s enterprise/CUSTOM_PROPERTIES.md
           test -s enterprise/SECURITY_ROLLOUT.md
           test -s enterprise/ADMIN_ACTIVATION.md
+          test -s enterprise/EFFECTIVE_STATE.md
           test -s THIRD_PARTY_LICENSES.md
           test -s .github/workflows/dpn-enterprise-ruleset.yml
           test -s .github/workflows/dpn-enterprise-elevated-ruleset.yml
@@ -99,6 +100,7 @@ jobs:
               "Source vs. Effective State",
               "Enterprise Quick Access",
               "Enterprise Health Definition",
+              "Effective State Register",
               "Rollout State",
           ]:
               if required_text not in overview:
