@@ -301,6 +301,7 @@ The Enterprise control plane exists to make that evidence visible and increasing
 | [DPN Technology Organization](https://github.com/DPN-Technology) | Organization and repository estate |
 | [Enterprise Control Plane Source](https://github.com/DPN-Technology/.github/tree/main/enterprise) | Versioned Enterprise governance |
 | [Enterprise Policy](https://github.com/DPN-Technology/.github/blob/main/enterprise/policy.yml) | Machine-readable control baseline |
+| [Custom Property API Schema](https://github.com/DPN-Technology/.github/blob/main/enterprise/custom-properties.schema.json) | API-shaped definitions for the nine Enterprise repository properties |
 | [Public Estate Summary](https://github.com/DPN-Technology/.github/blob/main/enterprise/repositories.yml) | Public-safe aggregate governance counts and public repository properties |
 | [Ruleset Architecture](https://github.com/DPN-Technology/.github/blob/main/enterprise/RULESETS.md) | E0/E1/E2/E3 enforcement model |
 | [Machine-readable Rulesets](https://github.com/DPN-Technology/.github/blob/main/enterprise/rulesets.yml) | Ruleset targets, required workflows and promotion requirements |
