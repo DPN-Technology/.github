@@ -1,0 +1,35 @@
+name: DPN Enterprise Security
+
+on:
+  pull_request:
+  merge_group:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "23 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  green-gate:
+    uses: DPN-Technology/.github/.github/workflows/dpn-green-gate.yml@main
+    with:
+      lifecycle: development
+      enterprise_mode: audit
+      require_security_policy: true
+      require_dependency_record: false
+      require_runbook: false
+      require_codeowners: false
+      require_pr_template: false
+      require_action_sha_pinning: false
+      require_explicit_workflow_permissions: false
+
+  enterprise-security:
+    uses: DPN-Technology/.github/.github/workflows/dpn-enterprise-security.yml@main
+    with:
+      run_dependency_review: ${{ github.event_name == 'pull_request' }}
+      dependency_fail_severity: high
+      run_scorecard: false
+      upload_scorecard_sarif: false
