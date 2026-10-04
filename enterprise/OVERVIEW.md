@@ -307,6 +307,7 @@ The Enterprise control plane exists to make that evidence visible and increasing
 | [Actions Policy](https://github.com/DPN-Technology/.github/blob/main/enterprise/ACTIONS_POLICY.md) | Workflow and runner trust model |
 | [Access Model](https://github.com/DPN-Technology/.github/blob/main/enterprise/ACCESS_MODEL.md) | Roles, teams, PATs and GitHub Apps |
 | [Security Rollout](https://github.com/DPN-Technology/.github/blob/main/enterprise/SECURITY_ROLLOUT.md) | Audit → security configuration → enforce |
+| [Effective State Register](https://github.com/DPN-Technology/.github/blob/main/enterprise/EFFECTIVE_STATE.md) | Verified Enterprise settings vs source policy |
 | [Enterprise Activation Tracker](https://github.com/DPN-Technology/.github/issues/5) | Enterprise-owner activation work |
 | [DPN GitHub Command Center](https://dpn-technology.github.io/) | Public-safe DPN engineering command center |
 
