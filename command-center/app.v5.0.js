@@ -2976,7 +2976,7 @@
     if($("nexus-product-title"))$("nexus-product-title").textContent=product.label;
     if($("nexus-product-description"))$("nexus-product-description").textContent=PRODUCT_FOCUS_COPY[product.repo]||repo?.description||"Public DPN product surface.";
     if($("nexus-proof-score"))$("nexus-proof-score").textContent=`${proof.score}%`;
-    if($("nexus-proof-ring"))$("nexus-proof-ring").style.setProperty("--proof",String(proof.score));
+    if($("nexus-proof-ring"))$("nexus-proof-ring").style.setProperty("--proof",`${proof.score}%`);
     if($("nexus-stat-push"))$("nexus-stat-push").textContent=repo?.pushed_at?relativeAge(repo.pushed_at):"—";
     if($("nexus-stat-releases"))$("nexus-stat-releases").textContent=String(releases.length);
     if($("nexus-stat-visuals"))$("nexus-stat-visuals").textContent=String(visuals.length);
