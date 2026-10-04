@@ -121,6 +121,10 @@ jobs:
               else:
                   warnings.append(f"{label}: not found")
 
+          def annotate(level, message):
+              safe = str(message).replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+              print(f"::{level} title=DPN Enterprise Gate::{safe}")
+
           check("README", ["README.md", "README.rst", "README.txt"], required=True)
           check("Contribution guidance", ["CONTRIBUTING.md", ".github/CONTRIBUTING.md"])
           check("Support guidance", ["SUPPORT.md", ".github/SUPPORT.md"])
@@ -219,16 +223,23 @@ jobs:
               if suspicious_shell.search(text):
                   warnings.append(f"{item}: download-and-execute shell pattern requires review")
 
+          for row in failures:
+              annotate("error", row)
+          for row in violations:
+              annotate("error" if mode == "enforce" else "warning", row)
+          for row in warnings:
+              annotate("warning", row)
+
           summary = Path(os.environ["GITHUB_STEP_SUMMARY"])
           with summary.open("a", encoding="utf-8") as fh:
               fh.write("# DPN Enterprise Green Gate\n\n")
-              fh.write(f"- Repository: \`{os.environ.get('GITHUB_REPOSITORY','')}\`\n")
-              fh.write(f"- Commit: \`{os.environ.get('GITHUB_SHA','')}\`\n")
-              fh.write(f"- Lifecycle: \`{lifecycle}\`\n")
-              fh.write(f"- Enterprise mode: \`{mode.upper()}\`\n")
-              fh.write(f"- Required failures: \`{len(failures)}\`\n")
-              fh.write(f"- Enterprise violations: \`{len(violations)}\`\n")
-              fh.write(f"- Advisory warnings: \`{len(warnings)}\`\n\n")
+              fh.write(f"- Repository: `{os.environ.get('GITHUB_REPOSITORY','')}`\n")
+              fh.write(f"- Commit: `{os.environ.get('GITHUB_SHA','')}`\n")
+              fh.write(f"- Lifecycle: `{lifecycle}`\n")
+              fh.write(f"- Enterprise mode: `{mode.upper()}`\n")
+              fh.write(f"- Required failures: `{len(failures)}`\n")
+              fh.write(f"- Enterprise violations: `{len(violations)}`\n")
+              fh.write(f"- Advisory warnings: `{len(warnings)}`\n\n")
 
               def section(title, rows):
                   if not rows:
