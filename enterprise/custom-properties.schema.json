@@ -1,0 +1,125 @@
+{
+  "properties": [
+    {
+      "property_name": "dpn_product",
+      "value_type": "string",
+      "required": true,
+      "description": "Canonical DPN product or system identity.",
+      "values_editable_by": "org_actors",
+      "require_explicit_values": true
+    },
+    {
+      "property_name": "lifecycle",
+      "value_type": "single_select",
+      "required": true,
+      "description": "Current evidence-backed engineering lifecycle.",
+      "allowed_values": [
+        "concept",
+        "prototype",
+        "development",
+        "preview",
+        "release",
+        "maintenance",
+        "retired"
+      ],
+      "values_editable_by": "org_actors",
+      "require_explicit_values": true
+    },
+    {
+      "property_name": "governance_tier",
+      "value_type": "single_select",
+      "required": true,
+      "description": "DPN Enterprise policy tier used for ruleset targeting.",
+      "allowed_values": [
+        "critical",
+        "elevated",
+        "standard",
+        "experimental"
+      ],
+      "values_editable_by": "org_actors",
+      "require_explicit_values": true
+    },
+    {
+      "property_name": "criticality",
+      "value_type": "single_select",
+      "required": true,
+      "description": "Operational criticality of the repository.",
+      "allowed_values": [
+        "tier-1",
+        "tier-2",
+        "tier-3",
+        "experimental"
+      ],
+      "values_editable_by": "org_actors",
+      "require_explicit_values": true
+    },
+    {
+      "property_name": "clearance",
+      "value_type": "single_select",
+      "required": true,
+      "description": "DPN information classification.",
+      "allowed_values": [
+        "L1-GREEN",
+        "L2-YELLOW",
+        "L3-RED",
+        "L4-PURPLE"
+      ],
+      "values_editable_by": "org_actors",
+      "require_explicit_values": true
+    },
+    {
+      "property_name": "component",
+      "value_type": "single_select",
+      "required": true,
+      "description": "Primary engineering component type.",
+      "allowed_values": [
+        "application",
+        "service",
+        "infrastructure",
+        "website",
+        "library",
+        "simulation",
+        "agent",
+        "documentation",
+        "control-plane"
+      ],
+      "values_editable_by": "org_actors",
+      "require_explicit_values": true
+    },
+    {
+      "property_name": "customer_facing",
+      "value_type": "true_false",
+      "required": true,
+      "description": "Whether external users or customers directly depend on the repository.",
+      "values_editable_by": "org_actors",
+      "require_explicit_values": true
+    },
+    {
+      "property_name": "release_channel",
+      "value_type": "single_select",
+      "required": true,
+      "description": "Current release channel.",
+      "allowed_values": [
+        "dev",
+        "beta",
+        "stable",
+        "none"
+      ],
+      "values_editable_by": "org_actors",
+      "require_explicit_values": true
+    },
+    {
+      "property_name": "security_tier",
+      "value_type": "single_select",
+      "required": true,
+      "description": "Security control tier.",
+      "allowed_values": [
+        "baseline",
+        "elevated",
+        "critical"
+      ],
+      "values_editable_by": "org_actors",
+      "require_explicit_values": true
+    }
+  ]
+}
