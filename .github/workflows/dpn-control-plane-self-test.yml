@@ -12,6 +12,18 @@ on:
       - "enterprise/**"
       - "templates/**"
       - "README.md"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/**"
+      - ".github/workflow-templates/**"
+      - ".github/VULNERABILITY_REPORT.yml"
+      - "CONTROL_PLANE.md"
+      - "GREEN_GATE_STANDARD.md"
+      - "REPOSITORY_METADATA_STANDARD.md"
+      - "enterprise/**"
+      - "templates/**"
+      - "README.md"
   workflow_dispatch:
 
 permissions:
