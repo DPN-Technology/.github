@@ -23,8 +23,11 @@ Rules:
 
 Required DPN workflow:
 - source repository: `DPN-Technology/.github`;
-- workflow: `.github/workflows/dpn-green-gate.yml`;
-- supported triggers in caller/ruleset context: `pull_request` and `merge_group`.
+- workflow: `.github/workflows/dpn-enterprise-ruleset.yml`;
+- events: `pull_request` and `merge_group`;
+- rollout mode: `audit` first, then switch the called Green Gate to `enforce` after repository findings are remediated.
+
+The ruleset workflow is intentionally separate from the reusable `dpn-green-gate.yml`. The ruleset file is directly triggerable by GitHub's organization ruleset engine and then calls the reusable policy engine against the target repository.
 
 Repository-specific required checks should include build/test CI and security checks that are stable and applicable to that repository.
 
@@ -58,7 +61,13 @@ Before enabling merge queue, every required Actions workflow must support `merge
 
 ## Required workflow rollout
 
-GitHub Enterprise rulesets can require a workflow from a designated repository to pass before merge. Use the public DPN `.github` control-plane repository as the reusable/ruleset workflow source where appropriate, then add repository-specific checks separately.
+GitHub Enterprise rulesets can require a workflow from a designated repository to pass before merge. Use the public DPN `.github` control-plane repository as the source and select:
+
+`.github/workflows/dpn-enterprise-ruleset.yml`
+
+Do not select the reusable `dpn-green-gate.yml` directly because it is a `workflow_call` implementation detail rather than the organization-ruleset entry point.
+
+Start the organization ruleset in evaluation mode where available. Once the repositories are clean and the gate has reported reliably, change the reusable Green Gate invocation in the ruleset workflow from `enterprise_mode: audit` to `enterprise_mode: enforce`.
 
 ## Advanced Security licensing
 
