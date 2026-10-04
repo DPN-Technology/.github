@@ -52,6 +52,8 @@ jobs:
         run: |
           set -euo pipefail
           test -s enterprise/OVERVIEW.md
+          test -s enterprise/ENTERPRISE_OVERVIEW.md
+          test -s enterprise/PUBLISH_ENTERPRISE_OVERVIEW.md
           test -s enterprise/policy.yml
           test -s enterprise/repositories.yml
           test -s enterprise/RULESETS.md
