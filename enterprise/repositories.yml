@@ -3,7 +3,7 @@ organization: DPN-Technology
 classification_status: public-safe-enterprise-summary
 privacy:
   publish_private_repository_names: false
-  internal_inventory_location: DPN-Operational-Control
+  internal_inventory_location: private-operational-inventory
   note: Private and internal repository identities are intentionally excluded from the public .github control plane.
 
 estate:
