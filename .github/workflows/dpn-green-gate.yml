@@ -8,6 +8,11 @@ on:
         required: false
         type: string
         default: development
+      enterprise_mode:
+        description: audit reports Enterprise findings; enforce fails on policy violations.
+        required: false
+        type: string
+        default: audit
       require_security_policy:
         description: Require SECURITY.md.
         required: false
@@ -23,104 +28,237 @@ on:
         required: false
         type: boolean
         default: false
+      require_codeowners:
+        description: Require CODEOWNERS.
+        required: false
+        type: boolean
+        default: false
+      require_pr_template:
+        description: Require a pull request template.
+        required: false
+        type: boolean
+        default: false
+      require_action_sha_pinning:
+        description: Require non-local GitHub Actions to be pinned to immutable commit SHAs.
+        required: false
+        type: boolean
+        default: false
+      require_explicit_workflow_permissions:
+        description: Require every workflow to declare an explicit permissions block.
+        required: false
+        type: boolean
+        default: false
+      max_tracked_file_mb:
+        description: Flag tracked files larger than this size.
+        required: false
+        type: number
+        default: 50
 
 permissions:
   contents: read
 
 jobs:
   green-gate:
-    name: DPN Green Gate
+    name: DPN Enterprise Green Gate
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     steps:
       - name: Checkout caller repository
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
 
-      - name: Evaluate repository evidence
+      - name: Evaluate repository evidence and Enterprise policy
         shell: bash
         env:
           DPN_LIFECYCLE: ${{ inputs.lifecycle }}
+          DPN_ENTERPRISE_MODE: ${{ inputs.enterprise_mode }}
           REQUIRE_SECURITY: ${{ inputs.require_security_policy }}
           REQUIRE_DEPENDENCY: ${{ inputs.require_dependency_record }}
           REQUIRE_RUNBOOK: ${{ inputs.require_runbook }}
+          REQUIRE_CODEOWNERS: ${{ inputs.require_codeowners }}
+          REQUIRE_PR_TEMPLATE: ${{ inputs.require_pr_template }}
+          REQUIRE_SHA_PINNING: ${{ inputs.require_action_sha_pinning }}
+          REQUIRE_WORKFLOW_PERMISSIONS: ${{ inputs.require_explicit_workflow_permissions }}
+          MAX_TRACKED_FILE_MB: ${{ inputs.max_tracked_file_mb }}
         run: |
           set -euo pipefail
-          failures=0
-          warnings=0
 
-          check_required() {
-            local label="$1"
-            shift
-            local found=0
-            for path in "$@"; do
-              if [[ -e "$path" ]]; then
-                found=1
-                break
-              fi
-            done
-            if [[ "$found" -eq 1 ]]; then
-              echo "PASS: $label"
-            else
-              echo "FAIL: $label"
-              failures=$((failures + 1))
-            fi
+          python3 - <<'PY'
+          import os
+          import re
+          import subprocess
+          from pathlib import Path
+
+          mode = os.environ.get("DPN_ENTERPRISE_MODE", "audit").strip().lower()
+          if mode not in {"audit", "enforce"}:
+              raise SystemExit("enterprise_mode must be 'audit' or 'enforce'")
+
+          require_security = os.environ.get("REQUIRE_SECURITY", "true").lower() == "true"
+          require_dependency = os.environ.get("REQUIRE_DEPENDENCY", "false").lower() == "true"
+          require_runbook = os.environ.get("REQUIRE_RUNBOOK", "false").lower() == "true"
+          require_codeowners = os.environ.get("REQUIRE_CODEOWNERS", "false").lower() == "true"
+          require_pr_template = os.environ.get("REQUIRE_PR_TEMPLATE", "false").lower() == "true"
+          require_sha = os.environ.get("REQUIRE_SHA_PINNING", "false").lower() == "true"
+          require_permissions = os.environ.get("REQUIRE_WORKFLOW_PERMISSIONS", "false").lower() == "true"
+          max_file_mb = float(os.environ.get("MAX_TRACKED_FILE_MB", "50"))
+          lifecycle = os.environ.get("DPN_LIFECYCLE", "development")
+
+          failures = []
+          violations = []
+          warnings = []
+          passes = []
+
+          def any_exists(paths):
+              return any(Path(p).exists() for p in paths)
+
+          def check(label, paths, required=False):
+              if any_exists(paths):
+                  passes.append(label)
+              elif required:
+                  failures.append(f"{label}: missing ({', '.join(paths)})")
+              else:
+                  warnings.append(f"{label}: not found")
+
+          check("README", ["README.md", "README.rst", "README.txt"], required=True)
+          check("Contribution guidance", ["CONTRIBUTING.md", ".github/CONTRIBUTING.md"])
+          check("Support guidance", ["SUPPORT.md", ".github/SUPPORT.md"])
+          check("License/notice", ["LICENSE", "LICENSE.md", "NOTICE", "NOTICE.md"])
+          check("Security policy", ["SECURITY.md", ".github/SECURITY.md"], required=require_security)
+          check(
+              "Third-party dependency/license record",
+              ["THIRD_PARTY_LICENSES.md", "THIRD_PARTY_NOTICES.md", "SBOM.spdx.json", "SBOM.cdx.json"],
+              required=require_dependency,
+          )
+          if require_runbook:
+              check("Operational runbook", ["RUNBOOK.md", "docs/RUNBOOK.md", "docs/runbook.md"], required=True)
+          if require_codeowners:
+              check("CODEOWNERS", ["CODEOWNERS", ".github/CODEOWNERS", "docs/CODEOWNERS"], required=True)
+          if require_pr_template:
+              check(
+                  "Pull request template",
+                  [".github/pull_request_template.md", ".github/PULL_REQUEST_TEMPLATE.md", "pull_request_template.md"],
+                  required=True,
+              )
+
+          tracked = subprocess.check_output(["git", "ls-files"], text=True).splitlines()
+
+          sensitive_names = {
+              ".env", ".env.local", ".env.production", ".env.development",
+              "id_rsa", "id_dsa", "id_ecdsa", "id_ed25519",
+              "credentials.json", "service-account.json", "secrets.json",
           }
+          allowed_env_suffixes = (".example", ".sample", ".template", ".dist")
+          for item in tracked:
+              p = Path(item)
+              name = p.name.lower()
+              if name.startswith(".env") and name.endswith(allowed_env_suffixes):
+                  continue
+              if name in sensitive_names:
+                  violations.append(f"Tracked sensitive filename: {item}")
+              try:
+                  if p.is_file() and p.stat().st_size > max_file_mb * 1024 * 1024:
+                      violations.append(f"Tracked file exceeds {max_file_mb:g} MB: {item}")
+              except OSError:
+                  pass
 
-          check_optional() {
-            local label="$1"
-            shift
-            local found=0
-            for path in "$@"; do
-              if [[ -e "$path" ]]; then
-                found=1
-                break
-              fi
-            done
-            if [[ "$found" -eq 1 ]]; then
-              echo "PASS: $label"
-            else
-              echo "WARN: $label"
-              warnings=$((warnings + 1))
-            fi
-          }
+          private_key_re = re.compile(
+              rb"-----BEGIN (?:RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----"
+          )
+          for item in tracked:
+              p = Path(item)
+              try:
+                  if not p.is_file() or p.stat().st_size > 2 * 1024 * 1024:
+                      continue
+                  data = p.read_bytes()
+              except OSError:
+                  continue
+              if private_key_re.search(data):
+                  violations.append(f"Private-key material marker detected: {item}")
 
-          check_required "README" README.md README.rst README.txt
-          check_optional "Contribution guidance" CONTRIBUTING.md .github/CONTRIBUTING.md
-          check_optional "Support guidance" SUPPORT.md .github/SUPPORT.md
-          check_optional "License/notice" LICENSE LICENSE.md NOTICE NOTICE.md
+          workflow_dir = Path(".github/workflows")
+          sha_re = re.compile(r"^[0-9a-fA-F]{40,64}$")
+          uses_re = re.compile(r"^\s*-?\s*uses:\s*([^\s#]+)", re.MULTILINE)
 
-          if [[ "$REQUIRE_SECURITY" == "true" ]]; then
-            check_required "Security policy" SECURITY.md .github/SECURITY.md
-          else
-            check_optional "Security policy" SECURITY.md .github/SECURITY.md
-          fi
+          if workflow_dir.exists():
+              for wf in sorted(list(workflow_dir.glob("*.yml")) + list(workflow_dir.glob("*.yaml"))):
+                  text = wf.read_text(encoding="utf-8", errors="ignore")
+                  if re.search(r"(?m)^\s*permissions:\s*write-all\s*$", text):
+                      violations.append(f"{wf}: permissions: write-all is prohibited")
+                  if "pull_request_target:" in text:
+                      warnings.append(f"{wf}: pull_request_target requires explicit threat review")
+                  if not re.search(r"(?m)^permissions:\s*(?:$|\{)", text):
+                      msg = f"{wf}: no top-level explicit permissions block"
+                      (violations if require_permissions else warnings).append(msg)
 
-          if [[ "$REQUIRE_DEPENDENCY" == "true" ]]; then
-            check_required "Third-party dependency/license record" THIRD_PARTY_LICENSES.md THIRD_PARTY_NOTICES.md SBOM.spdx.json SBOM.cdx.json
-          else
-            check_optional "Third-party dependency/license record" THIRD_PARTY_LICENSES.md THIRD_PARTY_NOTICES.md SBOM.spdx.json SBOM.cdx.json
-          fi
+                  for use in uses_re.findall(text):
+                      if use.startswith("./") or use.startswith("docker://"):
+                          continue
+                      if "@" not in use:
+                          violations.append(f"{wf}: action reference has no immutable ref: {use}")
+                          continue
+                      action, ref = use.rsplit("@", 1)
+                      if action.startswith("DPN-Technology/.github/"):
+                          continue
+                      if not sha_re.fullmatch(ref):
+                          msg = f"{wf}: action not SHA-pinned: {use}"
+                          (violations if require_sha else warnings).append(msg)
 
-          if [[ "$REQUIRE_RUNBOOK" == "true" ]]; then
-            check_required "Operational runbook" RUNBOOK.md docs/RUNBOOK.md docs/runbook.md
-          fi
+          suspicious_shell = re.compile(
+              r"(?i)(curl|wget)[^\n|]{0,240}\|\s*(bash|sh)|invoke-webrequest[^\n|]{0,240}\|\s*(iex|invoke-expression)"
+          )
+          for item in tracked:
+              p = Path(item)
+              if p.suffix.lower() not in {".yml", ".yaml", ".sh", ".ps1"}:
+                  continue
+              try:
+                  text = p.read_text(encoding="utf-8", errors="ignore")
+              except OSError:
+                  continue
+              if suspicious_shell.search(text):
+                  warnings.append(f"{item}: download-and-execute shell pattern requires review")
 
-          {
-            echo "# DPN Green Gate"
-            echo
-            echo "- Repository: \`${GITHUB_REPOSITORY}\`"
-            echo "- Commit: \`${GITHUB_SHA}\`"
-            echo "- Lifecycle: \`${DPN_LIFECYCLE}\`"
-            echo "- Required failures: \`${failures}\`"
-            echo "- Advisory warnings: \`${warnings}\`"
-            echo
-            if [[ "$failures" -eq 0 ]]; then
-              echo "## Status: GREEN"
-            else
-              echo "## Status: RED"
-            fi
-          } >> "$GITHUB_STEP_SUMMARY"
+          summary = Path(os.environ["GITHUB_STEP_SUMMARY"])
+          with summary.open("a", encoding="utf-8") as fh:
+              fh.write("# DPN Enterprise Green Gate\n\n")
+              fh.write(f"- Repository: \`{os.environ.get('GITHUB_REPOSITORY','')}\`\n")
+              fh.write(f"- Commit: \`{os.environ.get('GITHUB_SHA','')}\`\n")
+              fh.write(f"- Lifecycle: \`{lifecycle}\`\n")
+              fh.write(f"- Enterprise mode: \`{mode.upper()}\`\n")
+              fh.write(f"- Required failures: \`{len(failures)}\`\n")
+              fh.write(f"- Enterprise violations: \`{len(violations)}\`\n")
+              fh.write(f"- Advisory warnings: \`{len(warnings)}\`\n\n")
 
-          if [[ "$failures" -ne 0 ]]; then
-            exit 1
-          fi
+              def section(title, rows):
+                  if not rows:
+                      return
+                  fh.write(f"## {title}\n\n")
+                  for row in rows[:100]:
+                      fh.write(f"- {row}\n")
+                  if len(rows) > 100:
+                      fh.write(f"- ... {len(rows)-100} more\n")
+                  fh.write("\n")
+
+              section("Required failures", failures)
+              section("Enterprise policy findings", violations)
+              section("Advisories", warnings)
+              section("Passing evidence", passes)
+
+              if failures:
+                  status = "RED — required repository evidence is missing"
+              elif mode == "enforce" and violations:
+                  status = "RED — Enterprise policy violations must be resolved"
+              elif violations or warnings:
+                  status = "AMBER — mergeable in audit mode; hardening work remains"
+              else:
+                  status = "GREEN — baseline and Enterprise policy checks passed"
+              fh.write(f"## Status: {status}\n")
+
+          print(f"DPN Green Gate: failures={len(failures)} violations={len(violations)} warnings={len(warnings)} mode={mode}")
+
+          if failures:
+              raise SystemExit(1)
+          if mode == "enforce" and violations:
+              raise SystemExit(1)
+          PY
